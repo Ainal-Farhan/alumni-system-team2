@@ -14,17 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 import jdbc.JDBCUtility;
 
 /**
@@ -94,10 +87,15 @@ public class ManageNewsControl extends HttpServlet{
 
 	/**
 	 * 
+         * @param option
 	 * @param newsTitle
 	 * @param newsCategory
 	 * @param newsArticle
 	 * @param newsWebsite
+         * @param request
+         * @param response
+         * @throws javax.servlet.ServletException
+         * @throws java.io.IOException
 	 */
 	public void verifyNewsData(String option, String newsTitle, String newsCategory, String newsArticle, String newsWebsite, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
@@ -122,6 +120,11 @@ public class ManageNewsControl extends HttpServlet{
 	/**
 	 * 
 	 * @param newsID
+         * @param option
+         * @param request
+         * @param response
+         * @throws javax.servlet.ServletException
+         * @throws java.io.IOException
 	 */
 	public void verifyNewsID(int newsID, String option, HttpServletRequest request, HttpServletResponse response) 
                 throws ServletException, IOException {
@@ -217,13 +220,17 @@ public class ManageNewsControl extends HttpServlet{
 	/**
 	 * 
 	 * @param newsAction
+         * @param request
+         * @param response
+         * @throws javax.servlet.ServletException
+         * @throws java.io.IOException
 	 */
         
         
 	public void compareNewsAction(String newsAction, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
             
-            if(newsAction=="Add")
+            if("Add".equals(newsAction))
             {   
                 String message = "no";
                 HttpSession session = request.getSession();
@@ -231,7 +238,7 @@ public class ManageNewsControl extends HttpServlet{
                 request.getRequestDispatcher("WEB-INF/event/jsp/AddNewsInterface.jsp").forward(request, response);  
             }
             
-            else if(newsAction=="Update")
+            else if("Update".equals(newsAction))
             {
                 String opt = "Update";
                 HttpSession session = request.getSession();
@@ -242,7 +249,7 @@ public class ManageNewsControl extends HttpServlet{
                 //sendPage(request, response, "/UpdateEventInterface.jsp");    
             }
             
-            else if(newsAction=="Delete")
+            else if("Delete".equals(newsAction))
             {
            
                 //fetchAllSavedEvent(request, response);
