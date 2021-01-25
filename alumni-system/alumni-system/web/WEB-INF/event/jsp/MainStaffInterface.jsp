@@ -103,7 +103,7 @@
 
         <table border="0" align="center">
             <div class="d-grid gap-2 col-2 mx-auto pb-4">
-              <a href="ViewPageControl?option=Main Menu" class="btn btn-success">                           
+              <a href="ViewPageControl?option=Main Menu" class="btn btn-success btn-lg">                           
                   Homepage
               </a>       
             </div>
