@@ -49,7 +49,7 @@ public class JDBCUtility {
                
                 String dbName = "alumni_module-db";
                 String host = "localhost";
-                String port = "3307";
+                String port = "3306";
                 String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?useTimeZone=true&serverTimezone=UTC&autoReconnect=true&useSSL=false";
                 String userName = "root";
                 String password = "";
