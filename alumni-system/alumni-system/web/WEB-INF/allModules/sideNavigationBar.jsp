@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     </head>
     <body>
         <jsp:useBean id="user" type="com.models.user.User" scope="session" />
@@ -23,14 +23,14 @@
                 <p>HOME</p>
             </a>
             <a href="ManageUserController?option=editProfile" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
-                <i class="fa fa-pencil w3-xxlarge"></i>
+                <i class="far fa-edit w3-xxlarge"></i>
                 <p>EDIT PROFILE</p>
             </a>
             
             <form action="AlumniController" method="POST" name="alumni-list">
                 <div class="w3-bar-item w3-button w3-padding-large w3-hover-white" onClick="document.forms['alumni-list'].submit();">
                     <input type="hidden" name="requestType" value="viewAlumniList">
-                    <i class="fa fa-user w3-xxlarge"></i>
+                    <i class="fas fa-users w3-xxlarge"></i>
                     <p>ALUMNI LIST</p>
                 </div>
             </form>
@@ -38,7 +38,7 @@
             <form action="ReportingController" method="POST" name="reporting-dashboard">
                 <div class="w3-bar-item w3-button w3-padding-large w3-hover-white" onClick="document.forms['reporting-dashboard'].submit();">
                     <input type="hidden" name="requestType" value="viewDashboard">
-                    <i class="fa fa-dashboard w3-xxlarge"></i>
+                    <i class="fas fa-chart-line w3-xxlarge"></i>
                     <p>DASHBOARD</p>
                 </div>
             </form>

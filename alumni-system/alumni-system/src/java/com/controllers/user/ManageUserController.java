@@ -58,7 +58,7 @@ public class ManageUserController extends HttpServlet {
                     String role = request.getParameter("role");
                     User userRegistered;
                     
-                    userRegistered = submitData(request, name, email, password, role, phoneNum, option);
+                    userRegistered = submitData(request, null, name, email, password, role, phoneNum, option);
                     
                     if (userRegistered!=null){
                         session.setAttribute("user", userRegistered);
@@ -169,16 +169,13 @@ public class ManageUserController extends HttpServlet {
                     String userID = request.getParameter("userID");
                     User u;
                     
-                        u = submitData(request, name, email, password, role, phoneNum, option);
+                    u = submitData(request, userID, name, email, password, role, phoneNum, option);
                     
-                        if (u!=null){
-                            User a =(User)session.getAttribute("user");  
-                            a.setUserDetails(userID, name, email, password, role, phoneNum);
-                            session.setAttribute("user", a);
-                            sendReturnMessage("UPDATE SUCCESS", request, response);
-                        }
-                        else
-                            sendReturnMessage("UPDATE SUCCESS", request, response);
+                    if (u!=null && password.equals(password2)){
+                        session.setAttribute("user", u);
+                        sendReturnMessage("UPDATE SUCCESS", request, response);
+                    }
+                    else sendReturnMessage("UPDATE ERROR", request, response);
                     break;
                 }
             case "addUser":
@@ -195,7 +192,7 @@ public class ManageUserController extends HttpServlet {
                     String role = request.getParameter("role");
                     User status;
                     option = "register";
-                    status = submitData(request, name, email, password, role, phoneNum, option);
+                    status = submitData(request, null, name, email, password, role, phoneNum, option);
                     
                     if (status!=null){
                         sendReturnMessage("USER ADDED SUCCESSFULLY", request, response);
@@ -403,10 +400,17 @@ public class ManageUserController extends HttpServlet {
         }
     }
     
-    public User submitData(HttpServletRequest request, String name, String email, String password, String role, String phoneNum, String option) 
+    public User submitData(HttpServletRequest request, String userID, String name, String email, String password, String role, String phoneNum, String option) 
             throws ServletException, IOException
     {
-        int i = validateData(name, email, password, role, phoneNum, option);
+        int i = 0;
+        if(userID == null) {
+            i = validateData(name, email, password, role, phoneNum, option);
+        }
+        else {
+            i = 1;
+        }
+        
         Creator c = new Creator();
         User u = c.FactoryMethod(role);
         if (i!=0) {
@@ -445,10 +449,41 @@ public class ManageUserController extends HttpServlet {
                     return null;
                 } 
             }
+            else if(option.equals("submitEditData")){
+                try
+                {
+                    int id=0;
+                    Connection con = null;
+                    PreparedStatement preparedStatement = null;
+                    con = JDBCUtility.getCon();
+                    String query = "UPDATE `users` set `name` = ?, `email` = ?, `password` = ?, `phone` = ? WHERE `role` = ? AND `userID` = ?;"; //Update user details with updated value
+                    
+                    preparedStatement = con.prepareStatement(query);
+                    preparedStatement.setString(1, name);
+                    preparedStatement.setString(2, email);
+                    preparedStatement.setString(3, password);
+                    preparedStatement.setString(4, phoneNum);
+                    preparedStatement.setString(5, role);
+                    preparedStatement.setString(6, userID);
+                    
+//                    System.out.println(preparedStatement.toString());
+                    
+                    if(preparedStatement.executeUpdate() > 0) {
+                        u = c.FactoryMethod(role);
+                        u.setUserDetails(userID, name, email, password, role, phoneNum);
+                        return u;
+                    }
+                    
+                    return null;
+                }
+                catch(SQLException e)
+                {
+                    System.out.println(e);
+                    return null;
+                } 
+            }
             else {
-                u = c.FactoryMethod(role);
-//                u.setUserDetails(name, email, password, role, phoneNum);
-                return u;
+                return null;
             }
         }
         else{
@@ -485,20 +520,22 @@ public class ManageUserController extends HttpServlet {
                 i= preparedStatement.executeUpdate();
                 return i;
             }
-            else {
-                String query = "UPDATE users SET name = ?, phone = ?, email = ?, password = ? WHERE email=?";
-                preparedStatement = con.prepareStatement(query); //Making use of prepared statements here to insert bunch of data
-                preparedStatement.setString(1, name);
-                preparedStatement.setString(2, phoneNum);
-                preparedStatement.setString(3, email);
-                preparedStatement.setString(4, password);
-                preparedStatement.setString(5, email);
-                i= preparedStatement.executeUpdate();
-                return i;
-            }
+//            else {
+//                String query = "UPDATE users SET name = ?, phone = ?, email = ?, password = ? WHERE email=?";
+//                preparedStatement = con.prepareStatement(query); //Making use of prepared statements here to insert bunch of data
+//                preparedStatement.setString(1, name);
+//                preparedStatement.setString(2, phoneNum);
+//                preparedStatement.setString(3, email);
+//                preparedStatement.setString(4, password);
+//                preparedStatement.setString(5, email);
+//                i= preparedStatement.executeUpdate();
+//                return i;
+//            }
+            return 0;
         }
         catch(SQLException e)
         {
+            System.out.println(e);
             i=0;
             return i;
         }  

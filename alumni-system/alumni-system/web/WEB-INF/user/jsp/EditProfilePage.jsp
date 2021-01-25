@@ -12,16 +12,15 @@
         <title>EDIT PROFILE</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
         <style>
             body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-            .w3-row-padding img {margin-bottom: 12px}
-            /* Set the width of the sidebar to 120px */
-            .w3-sidebar {width: 120px;background: #333399;}
-            /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
             #main {margin-left: 120px}
             /* Remove margins from "page content" on small screens */
             @media only screen and (max-width: 600px) {#main {margin-left: 0}}
@@ -34,117 +33,190 @@
             {
                 display: inline-block;
             }
+            .center-container {
+                width: 80%;
+                display: block;
+                margin-right: auto;
+                margin-left: auto;
+                padding-top: 10px;
+            }
+            .header-home {
+                text-align: center;
+            }
+            .custom-shadow {
+                box-shadow: 
+                    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
+                    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, 
+                    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            }
+            input:focus {
+                outline: 0;
+                outline-style:none;
+                outline-width:0;
+            } 
+            .edit-profile-container {
+                width: 60%;
+                display:block;
+                margin-right:auto;
+                margin-left:auto;
+            }
+            .td-custom {
+                height: 20px;
+            }
         </style>
     </head>
     
-<body class="w3-white">
-    <jsp:include page="../../allModules/sideNavigationBar.jsp" />
-
-<!-- Page Content -->
-<div class="w3-padding-large" id="main">
-  <!-- Header/Home -->
-  <header class="w3-container w3-padding-29 w3-center w3-white" id="home">
-    <br><img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%">
-    <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br>
-  </header>
-  
-  <div class="w3-container w3-padding-25 w3-center w3-white">
-      <script>
-       function validate()
-        { 
-             var name = document.form.name.value;
-             var email = document.form.email.value;
-             var phoneNum = document.form.phoneNum.value; 
-             var password = document.form.password.value;
-             var conpassword= document.form.password2.value;
-             var role= document.form.role.value;
-
-             if (name==null || name=="")
-             { 
-             alert("Name can't be blank"); 
-             return false; 
-             }
-             else if (email==null || email=="")
-             { 
-             alert("Email can't be blank"); 
-             return false; 
-             }
-             else if (phoneNum==null || phoneNum=="")
-             { 
-             alert("Phone Number can't be blank"); 
-             return false; 
-             }
-             else if(password.length<8)
-             { 
-             alert("Password must be at least 6 characters long."); 
-             return false; 
-             } 
-             else if (password!=conpassword)
-             { 
-             alert("Confirm Password should match with the Password"); 
-             return false; 
-             } 
-         } 
-        </script> 
+    <body>
         <jsp:useBean id="user" type="com.models.user.User" scope="session" />
-      <form name="form" action="ManageUserController" method="post" onsubmit="return validate()">
-      <table width="60%" border="5" cellspacing="5" cellpadding="5" align="center">
-                    <tr>
-                      <th scope="row"><div align="left">USER ID</div></th>
-                      <td><label>
-                        <input type="text" disabled value ="<jsp:getProperty name="user" property="userID"/>" size = "60%">
-                        <input type="text" name="userID" id="userID" value = "<jsp:getProperty name="user" property="userID"/>" hidden>
-                      </label></td>
-                    </tr>
-                    <tr>
-                      <th width="30%" scope="row"><div align="left">NAME</div></th>
-                      <td width="80%"><label>
-                        <input type="text" name="name" id="name" value ="<jsp:getProperty name="user" property="name"/>" size = "60%">
-                      </label></td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><div align="left">EMAIL</div></th>
-                      <td><label>
-                        <input type="email" name="email" id="email" value ="<jsp:getProperty name="user" property="email"/>" size = "60%">
-                      </label></td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><div align="left">PHONE NUMBER</div></th>
-                      <td><label>
-                        <input type="text" name="phoneNum" id="phoneNum" value ="<jsp:getProperty name="user" property="phoneNum"/>" size = "60%">
-                      </label></td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><div align="left">ROLE</div></th>
-                      <td><label>
-                        <input type="text" disabled value ="<jsp:getProperty name="user" property="role"/>" size = "60%">
-                        <input type="text" name="role" id="role" value = "<jsp:getProperty name="user" property="role"/>" hidden>
-                      </label></td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><div align="left">PASSWORD</div></th>
-                      <td><label>
-                        <input type="password" name="password" id="password" value ="<jsp:getProperty name="user" property="password"/>" size = "60%">
-                      </label></td>
-                    </tr>
-                    <tr>
-                      <th scope="row"><div align="left">CONFIRM PASSWORD</div></th>
-                      <td><label>
-                        <input type="password" name="password2" id="password2" value ="<jsp:getProperty name="user" property="password"/>" size = "60%">
-                      </label></td>
-                    </tr>
-       </table>  
-            <span style="color:red; font-weight: bold; align-content: center;">
-                     <br><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%><br>
-            </span><br>
-            <input type="text" name="option" id="option" value = "submitEditData" hidden>
-            <input type="submit" name="button" id="button" value="Submit">
-      </form>
-  </div>
+        
+        <!-- Page Content -->
+        <div class="row">
+            <div class="col-1">
+                <jsp:include page="../../allModules/sideNavigationBar.jsp" />
+            </div>
+            <div class="col">
+                <!-- Page Content -->
+                <div class="center-container">
+                    <div class="jumbotron">
+                        <!-- Header/Home -->
+                        <header class="header-home">
+                            <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
+                            <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br>
+                        </header>
 
-<!-- END PAGE CONTENT -->
-</div>
+                        <div class="edit-profile-container">
+                            <h1>Edit Profile Page</h1>
+                            <form name="form" action="ManageUserController" method="post" onsubmit="return validate()">
+                                <table class="table table-striped table-light custom-shadow">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th><div align="middle">Profile Information</div></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group row td-custom">
+                                                    <label for="userID" class="col-sm-4 col-form-label" style="font-weight: bolder;">USER ID</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control-plaintext" name="userID" id="userID" required value="<jsp:getProperty name="user" property="userID"/>" readonly>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group row td-custom">
+                                                    <label for="name" class="col-sm-4 col-form-label" style="font-weight: bolder;">NAME</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" name="name" id="name" required value="<jsp:getProperty name="user" property="name"/>">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group row td-custom">
+                                                    <label for="email" class="col-sm-4 col-form-label" style="font-weight: bolder;">EMAIL</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="email" class="form-control" name="email" id="email" required value="<jsp:getProperty name="user" property="email"/>">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group row td-custom">
+                                                    <label for="phoneNum" class="col-sm-4 col-form-label" style="font-weight: bolder;">PHONE NUMBER</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" name="phoneNum" id="phoneNum" required value="<jsp:getProperty name="user" property="phoneNum"/>">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group row td-custom">
+                                                    <label for="role" class="col-sm-4 col-form-label" style="font-weight: bolder;">ROLE</label>
+                                                    <div class="col-sm-8" style="border:none;">
+                                                        <input type="text" class="form-control-plaintext" name="role" id="role" required value="<jsp:getProperty name="user" property="role"/>" readonly>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group row td-custom">
+                                                    <label for="password" class="col-sm-4 col-form-label" style="font-weight: bolder;">PASSWORD</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="password" class="form-control" name="password" id="password" required value="<jsp:getProperty name="user" property="password"/>">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group row td-custom">
+                                                    <label for="password2" class="col-sm-4 col-form-label" style="font-weight: bolder;">CONFIRM PASSWORD</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="password" class="form-control" name="password2" id="password2" required value="<jsp:getProperty name="user" property="password"/>">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group td-custom" align="middle" >
+                                                    <span style="color:red; font-weight: bold; align-content: center;">
+                                                        <br><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%><br>
+                                                    </span><br>
+                                                    <input type="hidden" name="option" id="option" value = "submitEditData">
+                                                    <button type="submit" class="btn btn-success" name="button"><i class="fas fa-user-edit"></i> Submit</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>                                
+                                </table
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PAGE CONTENT -->
+            </div>
+        </div> 
+        <!-- END PAGE CONTENT -->
+        
+        <script>
+            function validate() { 
+                var name = document.form.name.value;
+                var email = document.form.email.value;
+                var phoneNum = document.form.phoneNum.value; 
+                var password = document.form.password.value;
+                var conpassword= document.form.password2.value;
+                var role= document.form.role.value;
 
-</body>
+                if (name===null || name==="") { 
+                    alert("Name can't be blank"); 
+                    return false; 
+                }
+                else if (email===null || email==="") { 
+                    alert("Email can't be blank"); 
+                    return false; 
+                }
+                else if (phoneNum===null || phoneNum==="") { 
+                    alert("Phone Number can't be blank"); 
+                    return false; 
+                }
+                else if(password.length<8) { 
+                    alert("Password must be at least 6 characters long."); 
+                    return false; 
+                } 
+                else if (password!=conpassword) { 
+                    alert("Confirm Password should match with the Password"); 
+                    return false; 
+                } 
+            } 
+        </script> 
+    </body>
 </html>
 
