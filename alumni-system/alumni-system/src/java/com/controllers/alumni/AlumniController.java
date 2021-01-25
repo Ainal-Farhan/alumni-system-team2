@@ -62,8 +62,8 @@ public class AlumniController extends HttpServlet {
 
     // We initialize static variables inside a static block.
     static {
-        ASC_ALUMNI_NAME = (Alumni alumni1, Alumni alumni2) -> alumni1.getName().compareTo(alumni2.getName());
-        DESC_ALUMNI_NAME = (Alumni alumni1, Alumni alumni2) -> alumni2.getName().compareTo(alumni1.getName());
+        ASC_ALUMNI_NAME = (Alumni alumni1, Alumni alumni2) -> alumni1.getName().toLowerCase().compareTo(alumni2.getName().toLowerCase());
+        DESC_ALUMNI_NAME = (Alumni alumni1, Alumni alumni2) -> alumni2.getName().toLowerCase().compareTo(alumni1.getName().toLowerCase());
     }
 
     /**

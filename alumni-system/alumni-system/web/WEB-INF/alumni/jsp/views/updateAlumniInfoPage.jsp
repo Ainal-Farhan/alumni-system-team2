@@ -11,6 +11,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Update Alumni</title>
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        
         <style>
             .custom-shadow {
                 box-shadow: 
@@ -67,22 +70,22 @@
         
         <div class="container-custom">
             <div class="jumbotron">
-                <h1 class="display-4">Edit Profile Page</h1>
+                <h1 class="display-4">Edit Alumni Information Page</h1>
                 <form action="AlumniController" method="POST" onSubmit="return checkEitherImageIsSelected()">
                     <img id="profilePicture" src="AlumniController?requestType=requestImage" alt="profile picture" class="mx-auto d-block custom-shadow" width="200" height="200" style="margin-top:10px;margin-bottom:10px;border-radius: 50%;">
                     <span id="fileSelected"> Selected Image: None</span>
 
                     <input type="file" name="selectedImage" class="form-control-file" accept="image/*" id="fileName" accept=".jpg,.jpeg,.png" onchange="validateFileType(event)" style="display:none;">
-                    <label for="fileName" class="btn btn-primary">Browse</label>
+                    <label for="fileName" class="btn btn-primary"><i class="fas fa-window-restore"></i> Browse</label>
                     
                     <input type="hidden" id="uploadedFileName" name="uploadedFileName" value="" required>
                     <input type="hidden" name="requestType" value="updateAlumniProfilePicture">
                     <input type="hidden" id="fileContent" name="fileContentBase64" value="" required>
 
-                    <input type="submit" class="btn btn-primary" id="uploadButton" value="Upload" name="upload-btn" style="margin-bottom: 8px;">
+                    <button type="submit" class="btn btn-primary" id="uploadButton" name="upload-btn" style="margin-bottom: 8px;" onclick="checkImageIsSelected()"><i class="fas fa-file-upload"></i> Upload</button>
                     
                     <%  if(!((String)request.getAttribute("profilePicture")).equals(AlumniPageList.ALUMNI_DEFAULT_PROFILE_PICTURE)) { %>
-                    <input type="submit" class="btn btn-primary" value="Default" name="remove-btn" style="margin-bottom: 8px;" onClick="toDefault()">
+                    <button type="submit" class="btn btn-primary" name="remove-btn" style="margin-bottom: 8px;" onClick="toDefault()"><i class="fas fa-reply-all"></i> Default</button>
                     <%  } %>
                 </form>
 
@@ -137,9 +140,15 @@
                     function toDefault() {
                         statusUpload = true;
                     }
+                    
+                    function checkImageIsSelected() {
+                        if(document.getElementById('fileContent').value === undefined || document.getElementById('fileContent').value === null || document.getElementById('fileContent').value === "") {
+                            alert("Please select an image before upload");
+                        }
+                    }
 
                     function checkEitherImageIsSelected() {
-                        if(statusUpload === null || statusUpload === undefined) {
+                        if(statusUpload === null || statusUpload === undefined) {                            
                             return false;
                         }
                         
@@ -300,7 +309,7 @@
                     
                     <div class="form-group center">
                         <input type="hidden" name="requestType" value="updateAlumniInfo">
-                        <button type="button" style="width:100px;" class="btn btn-success custom-shadow" onclick="updateConfirmation()">Save</button>
+                        <button type="button" style="width:100px;" class="btn btn-success custom-shadow" onclick="updateConfirmation()"><i class="far fa-save"></i> Save</button>
                     </div>
                     
                     <div id="overlay">
@@ -318,7 +327,7 @@
                 <form action="AlumniController" method="POST">
                     <div class="form-group center">
                         <input type="hidden" name="requestType" value="updateAlumniInfo">
-                        <input type="submit" style="width:100px;" name="cancel-btn" class="btn btn-primary custom-shadow" value="Cancel">
+                        <button type="submit" style="width:100px;" name="cancel-btn" class="btn btn-primary custom-shadow">Cancel</button>
                     </div>
                 </form>
             </div>

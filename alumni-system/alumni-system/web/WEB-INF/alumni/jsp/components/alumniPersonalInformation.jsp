@@ -9,6 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <style>
+            input:focus {
+                outline: 0;
+                outline-style:none;
+                outline-width:0;
+            }
+        </style>
     </head>
     <body>
         <div class="table-responsive">

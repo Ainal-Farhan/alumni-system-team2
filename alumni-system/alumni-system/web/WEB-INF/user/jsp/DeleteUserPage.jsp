@@ -8,174 +8,131 @@
 <%@page import="java.util.ArrayList"%>
 
 <%
-    ArrayList users = (ArrayList)session.getAttribute("users");
+    ArrayList<User> users = null;
+    User user = null;
+    if(!session.isNew()) {
+        users = (ArrayList)session.getAttribute("users");
+        user = (User)session.getAttribute("user");
+    }
 %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>DELETE USER</title>
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        
         <style>
-table {
-  max-width: 100%;
-}
-
-tr:nth-child(odd) {
-  background-color: #eee;
-}
-
-th {
-  background-color: #555;
-  color: #fff;
-}
-
-th,
-td {
-  text-align: left;
-  padding: 0.5em 1em;
-}
-
-td::before {
-  display: none;
-}
-
-@media screen and (max-width: 680px) {
- table {
-   border: 0;
-   display: block;
-   box-shadow: none;
- }
-
- thead {
-   position: absolute;
-   opacity: 0;
- }
-  
- tbody {
-   display: block;
-   width: 100%;
-   min-width: 19em;
-   max-width: 25em;
- }
-
- tr {
-   border-top: 2px solid #3c3c3b;
-   border-bottom: 1px solid #3c3c3b;
-   display: grid;
-   grid-template-columns: max-content auto;
-   margin-bottom: 1em;
- }
-
- td {
-   display: contents;
- }
-
- td::before {
-   display: inline-block;
-   font-weight: bold;
-   padding: 0.5em;
-   border-bottom: 1px solid;
- }
-  
-  td span {
-    padding: 0.5em;
-    border-bottom: 1px solid;
-  }
-
- td:last-child {
-   border-bottom: 0;
- }
-}
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-            .w3-row-padding img {margin-bottom: 12px}
-            /* Set the width of the sidebar to 120px */
-            .w3-sidebar {width: 120px;background: #333399;}
-            /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-            #main {margin-left: 120px}
-            /* Remove margins from "page content" on small screens */
+            body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
             @media only screen and (max-width: 600px) {#main {margin-left: 0}}
-            #outer
-            {
+            th,
+            td {
+                text-align: center;
+                padding: 0.5em 1em;
+            }
+            body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+            #outer {
                 width:100%;
                 text-align: center;
             }
-            .inner
-            {
+            .inner {
                 display: inline-block;
             }
-            table
-            {
-                width : 90%; 
-                height : 10%;  
-                
-                margin-left: 60px;
-                	
-                padding:2%; 
-                float: right;
-                right:10px;
-               
-                text-align:left;
-                position:relative;
-               
+            .center-container {
+                width: 80%;
+                display: block;
+                margin-right: auto;
+                margin-left: auto;
+                padding-top: 30px;
+            }
+            .delete-user-container {
+                width: 95%;
+                display:block;
+                margin-right:auto;
+                margin-left:auto;
+            }
+            .custom-shadow {
+                box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            }
+            .header-home {
+                text-align: center;
             }
         </style>
     </head>
-<body class="w3-white">
-<script>
-    var a = "<%= request.getParameter("status") %>";
-    if (a === "true") {
-        var answer = window.confirm("Delete Confirmation");
-        if (answer) {
-            location.replace("ManageUserController?option=confirmDelete&id=<%= request.getParameter("name") %>");
-        }
-        else {
-            //some code
-        }
-    }
-</script>
-                     
-    <jsp:include page="../../allModules/sideNavigationBar.jsp" />
-
-  <header class="w3-container w3-padding-32 w3-center w3-white">
-  </header>
-<div style="padding-left:150px;">
-        <table>
-            <thead>
-               <tr >
-                   <th>USER ID</th>
-                    <th>NAME</th>
-                    <th>EMAIL</th>
-                    <th>PHONE NUMBER</th>
-                    <th>ROLE</th>
-                    <th>DELETE</th>
-                </tr>
-            </thead>
-             <tbody>
-                <% 
-                int index=0;
-                for(int i=0;i<users.size();i++){
-                 
-                    
-                    User mp =(User)users.get(i);
-                    index++;
-                %>
-                    
-		<tr >
-                     <td><%= mp.getUserID() %></td>
-                     <td><%= mp.getName() %></td>
-                     <td><%= mp.getEmail()%></td>
-                     <td><%= mp.getPhoneNum()%></td> 
-                     <td><%= mp.getRole()%></td> 
-                     <td><center><a href="ManageUserController?option=delete&id=<%= mp.getUserID() %>">DELETE</a></center></td>
-                </tr>
-                <% 
+    <body>
+        <script>
+            var a = "<%= request.getParameter("status") %>";
+            if (a === "true") {
+                var answer = window.confirm("Delete Confirmation");
+                if (answer) {
+                    location.replace("ManageUserController?option=confirmDelete&id=<%= request.getParameter("name") %>");
                 }
-                %>
-            </tbody>
-        </table>
-</div>
+                else {
+                    //some code
+                }
+            }
+        </script>
+
+        <div class="row">
+            <div class="col-1">
+                <jsp:include page="../../allModules/sideNavigationBar.jsp" />
+            </div>
+            <div class="col center-container">
+                <div class="jumbotron center-container">
+                    <!-- Header/Home -->
+                    <header class="header-home">
+                        <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
+                        <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br>
+                    </header>
+                    
+                    <div class="table-responsive delete-user-container">
+                        <h1>Delete User Page</h1>
+                        <table class="table table-striped table-light custom-shadow">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>USER ID</th>
+                                    <th>NAME</th>
+                                    <th>EMAIL</th>
+                                    <th>PHONE NUMBER</th>
+                                    <th>ROLE</th>
+                                    <th>DELETE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% 
+                                int index=0;
+                                
+                                for(int i=0;i<users.size();i++){
+                                    User mp =(User)users.get(i);
+                                    
+                                    if(mp.getUserID().equals(user.getUserID())) {
+                                        continue;
+                                    }
+                                    
+                                    index++;
+                                %>
+
+                                <tr >
+                                    <td><%= mp.getUserID() %></td>
+                                    <td><%= mp.getName() %></td>
+                                    <td><%= mp.getEmail()%></td>
+                                    <td><%= mp.getPhoneNum()%></td> 
+                                    <td><%= mp.getRole()%></td> 
+                                    <td><center><a href="ManageUserController?option=delete&id=<%= mp.getUserID() %>" class="btn btn-danger">DELETE <i class="fas fa-user-minus"></i></a></center></td>
+                                </tr>
+                                <% 
+                                }
+                                %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
