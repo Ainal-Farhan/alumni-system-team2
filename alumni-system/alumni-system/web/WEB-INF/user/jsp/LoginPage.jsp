@@ -36,7 +36,7 @@
             text-align: center;
             font-size: 14px;
             
-            margin-top: 100px;
+            margin-top: 50px;
             padding-left: 20px;
             padding-right: 20px;
         }
@@ -61,60 +61,67 @@
 </head>
 <body>
     <div class="container">
-        <div class="center jumbotron">
-            <!-- Header/Home -->
-            <header class="header-home">
-                <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
-                <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br>
-            </header>
-            
-            <div class="table-responsive">
-                <form name="form" action="ManageUserController" method="post" class="form-login">
-                    <table class="table table-striped table-light custom-shadow" style="background-color:white;">
-                        <thead class="thead-dark">
-                            <tr>    
-                                <th>LOGIN</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="col">
-                                    <div class="form-group row">
-                                        <label for="email" class="col-sm-2 col-form-label" style="font-weight: bolder;">EMAIL</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="email" id="email" required size = "100%">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col">
-                                    <div class="form-group row">
-                                        <label for="email" class="col-sm-2 col-form-label" style="font-weight: bolder;">PASSWORD</label>
-                                        <div class="col-sm-10">
-                                            <input type="password" class="form-control" name="password" id="password" required size = "100%">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col">
-                                    <center>
-                                        <span style="color:red; font-weight: bold; align-content: center;">
-                                            <br><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%><br>
-                                        </span>
+        <div class="center">
+            <nav class="navbar navbar-dark bg-dark">
+                <div style="height:36px">
+                    <p class="navbar-brand"><i class="fa fa-key"></i> LOGIN</p>
+                </div>
+            </nav>
+            <div class="jumbotron" style="padding-top:25px;">
+                <!-- Header/Home -->
+                <header class="header-home">
+                    <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
+                    <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p>
+                </header>
 
-                                        <p>Don't have an account? <a href="ManageUserController?option=viewRegisterPage">Sign up now</a>.</p>
-                                        <label>
-                                            <input type="text" name="option" id="option" value = "login" hidden>
-                                            <button type="submit" class="btn btn-primary custom-shadow" name="button" id="button"><i class="fas fa-sign-in-alt"></i> LOGIN</button>
-                                        </label>
-                                    </center>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
+                <div class="table-responsive">
+                    <form name="form" action="ManageUserController" method="post" class="form-login">
+                        <table class="table table-striped table-light custom-shadow" style="background-color:white;">
+                            <thead class="thead-dark">
+                                <tr>    
+                                    <th>LOGIN</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="col">
+                                        <div class="form-group row">
+                                            <label for="email" class="col-sm-2 col-form-label" style="font-weight: bolder;">EMAIL</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="email" id="email" required size = "100%">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col">
+                                        <div class="form-group row">
+                                            <label for="email" class="col-sm-2 col-form-label" style="font-weight: bolder;">PASSWORD</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control" name="password" id="password" required size = "100%">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col">
+                                        <center>
+                                            <span style="color:red; font-weight: bold; align-content: center;">
+                                                <br><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%><br>
+                                            </span>
+
+                                            <p>Don't have an account? <a href="ManageUserController?option=viewRegisterPage">Sign up now</a>.</p>
+                                            <label>
+                                                <input type="text" name="option" id="option" value = "login" hidden>
+                                                <button type="submit" class="btn btn-primary custom-shadow" name="button" id="button"><i class="fas fa-sign-in-alt"></i> LOGIN</button>
+                                            </label>
+                                        </center>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

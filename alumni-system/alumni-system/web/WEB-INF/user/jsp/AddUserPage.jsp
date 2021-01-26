@@ -36,10 +36,10 @@
                 display: block;
                 margin-right: auto;
                 margin-left: auto;
-                padding-top: 30px;
+                padding-top: 5px;
             }
             .add-new-user-container {
-                width: 60%;
+                width: 100%;
                 display:block;
                 margin-right:auto;
                 margin-left:auto;
@@ -57,6 +57,7 @@
                     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
             }
             .header-home {
+                margin-top: -25px;
                 text-align: center;
             }
         </style>
@@ -67,110 +68,115 @@
             <div class="col-1">
                 <jsp:include page="../../allModules/sideNavigationBar.jsp" />
             </div>
-            <div class="col center-container">
-                <div class="jumbotron center-container">
-                    <!-- Header/Home -->
-                    <header class="header-home">
-                        <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
-                        <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br>
-                    </header>
-                    
-                    <!-- Page Content -->
-                    <div class="add-new-user-container">
-                        <form name="form" action="ManageUserController" method="post" onsubmit="return validate()">
-                            <h1>Add New User Page</h1>
-                            <table class="table table-striped table-light custom-shadow">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th><div align="middle">Profile Information</div></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group row td-custom">
-                                                <label for="name" class="col-sm-4 col-form-label" style="font-weight: bolder;">NAME</label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" class="form-control" name="name" id="name" required>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group row td-custom">
-                                                <label for="email" class="col-sm-4 col-form-label" style="font-weight: bolder;">EMAIL</label>
-                                                <div class="col-sm-8">
-                                                    <input type="email" class="form-control" name="email" id="email" required>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group row td-custom">
-                                                <label for="phoneNum" class="col-sm-4 col-form-label" style="font-weight: bolder;">PHONE NUMBER</label>
-                                                <div class="col-sm-8">
-                                                    <input type="text" class="form-control" name="phoneNum" id="phoneNum" required>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group row td-custom">
-                                                <label for="password" class="col-sm-4 col-form-label" style="font-weight: bolder;">PASSWORD</label>
-                                                <div class="col-sm-8">
-                                                    <input type="password" class="form-control" name="password" id="password" required>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group row td-custom">
-                                                <label for="password2" class="col-sm-4 col-form-label" style="font-weight: bolder;">CONFIRM PASSWORD</label>
-                                                <div class="col-sm-8">
-                                                    <input type="password" class="form-control" name="password2" id="password2" required>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group row td-custom">
-                                                <label for="role" class="col-sm-4 col-form-label" style="font-weight: bolder;">ROLE</label>                                            
-                                                <div class="form-check form-check-inline" style="padding-left: 20px;">
-                                                    <input class="form-check-input" type="radio" name="role" id="role" value="ALUMNI" checked>
-                                                    <label class="form-check-label" for="role">ALUMNI</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="role" id="role" value="STAFF">
-                                                    <label class="form-check-label" for="role">STAFF</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="role" id="role" value="ADMIN">
-                                                    <label class="form-check-label" for="role">ADMIN</label>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group" align="middle" >
-                                                <span style="color:red; font-weight: bold; align-content: center;">
-                                                    <br><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%><br>
-                                                </span>
+            <div class="col">
+                <div class="center-container">
+                    <nav class="navbar navbar-dark bg-dark">
+                        <div style="height:36px;">
+                            <p class="navbar-brand"><i class="fa fa-user-plus"></i> ADD NEW USER</p>
+                        </div>
+                    </nav>
 
-                                                <input type="text" name="option" id="option" value = "submitNewUser" hidden>
-                                                <button type="submit" class="btn btn-success" name="button"><i class="fas fa-user-edit"></i> Submit</button>
-                                                <button type="reset" class="btn btn-danger" name="button2"><i class="fas fa-eraser"></i> Reset</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>                                
-                            </table>
-                        </form>
+                    <div class="jumbotron">
+                        <!-- Header/Home -->
+                        <header class="header-home">
+                            <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
+                            <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p>
+                        </header>
+
+                        <!-- Page Content -->
+                        <div class="add-new-user-container">
+                            <form name="form" action="ManageUserController" method="post" onsubmit="return validate()">
+                                <table class="table table-striped table-light custom-shadow">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th colspan="2"><div align="middle">Profile Information</div></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group row td-custom">
+                                                    <label for="name" class="col-sm-4 col-form-label" style="font-weight: bolder;">NAME</label>
+                                                    <div class="col-sm">
+                                                        <input type="text" class="form-control" name="name" id="name" required>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group row td-custom">
+                                                    <label for="email" class="col-sm-4 col-form-label" style="font-weight: bolder;">EMAIL</label>
+                                                    <div class="col-sm">
+                                                        <input type="email" class="form-control" name="email" id="email" required>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group row td-custom">
+                                                    <label for="phoneNum" class="col-sm-5 col-form-label" style="font-weight: bolder;">PHONE NUMBER</label>
+                                                    <div class="col-sm">
+                                                        <input type="text" class="form-control" name="phoneNum" id="phoneNum" required>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group row td-custom">
+                                                    <label for="password" class="col-sm-4 col-form-label" style="font-weight: bolder;">PASSWORD</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="password" class="form-control" name="password" id="password" required>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group row td-custom">
+                                                    <label for="password2" class="col-sm-5 col-form-label" style="font-weight: bolder;">CONFIRM PASSWORD</label>
+                                                    <div class="col-sm">
+                                                        <input type="password" class="form-control" name="password2" id="password2" required>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group row td-custom">
+                                                    <label for="role" class="col-sm-4 col-form-label" style="font-weight: bolder;">ROLE</label>                                            
+                                                    <div class="form-check form-check-inline" style="padding-left: 20px;">
+                                                        <input class="form-check-input" type="radio" name="role" id="role" value="ALUMNI" checked>
+                                                        <label class="form-check-label" for="role">ALUMNI</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="role" id="role" value="STAFF">
+                                                        <label class="form-check-label" for="role">STAFF</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="role" id="role" value="ADMIN">
+                                                        <label class="form-check-label" for="role">ADMIN</label>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="form-group" align="middle" >
+                                                    <span style="color:red; font-weight: bold; align-content: center;">
+                                                        <br><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%><br>
+                                                    </span>
+
+                                                    <input type="text" name="option" id="option" value = "submitNewUser" hidden>
+                                                    <button type="submit" class="btn btn-success" name="button"><i class="fas fa-user-edit"></i> Submit</button>
+                                                    <button type="reset" class="btn btn-danger" name="button2"><i class="fas fa-eraser"></i> Reset</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>                                
+                                </table>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

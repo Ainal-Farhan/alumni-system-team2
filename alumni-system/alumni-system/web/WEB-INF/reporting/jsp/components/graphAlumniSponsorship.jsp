@@ -39,8 +39,8 @@
 
                 var options = {
                     title: "Sponsorship per year",
-                    width: 600,
-                    height: 400
+                    width: 450,
+                    height: 300
                 };
                 var chart = new google.visualization.ColumnChart(document.getElementById("chart_event_sponsor"));
                 chart.draw(view, options);

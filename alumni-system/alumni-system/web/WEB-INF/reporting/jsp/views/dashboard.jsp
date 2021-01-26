@@ -33,6 +33,7 @@
                 padding: 10px 0 10px 150px;
             }
             .header-home {
+                margin-top: -25px;
                 text-align: center;
             }
             @media only screen and (max-width: 600px) {.container-custom {padding-left: 10px; padding-top: 110px;}}
@@ -46,14 +47,19 @@
             
             <%  String userRole = ((User)session.getAttribute("user")).getRole(); %>
             <div class="container-custom">
+                <nav class="navbar navbar-dark bg-dark">
+                    <div style="height:36px">
+                        <p class="navbar-brand"><i class="fas fa-chart-line"></i> DASHBOARD</p>
+                    </div>
+                </nav>
+                
                 <div class="jumbotron">
                     <!-- Header/Home -->
                     <header class="header-home">
                         <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
-                        <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br>
+                        <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p>
                     </header>
 
-                    <h1>Dashboard</h1>
                     <div class="table-responsive">
                         <table class="table table-light custom-shadow">
                             <tr>

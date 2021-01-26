@@ -36,7 +36,7 @@
                 display: block;
                 margin-right: auto;
                 margin-left: auto;
-                padding-top: 10px;
+                padding-top: 1%;
             }
             .header-home {
                 text-align: center;
@@ -65,15 +65,20 @@
             <div class="col">
                 <!-- Page Content -->
                 <div class="center-container">
-                    <div class="jumbotron" style="min-height:95vh;">
+                    <nav class="navbar navbar-dark bg-dark">
+                        <div style="height:36px">
+                            <p class="navbar-brand"><i class="fa fa-home"></i> HOME</p>
+                        </div>
+                    </nav>
+                    
+                    <div class="jumbotron" style="min-height:50vh;">
                         <!-- Header/Home -->
                         <header class="header-home">
-                            <br><br><br><br><img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
-                            <br><br><br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br><br><br>
+                            <br><img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br><br>
+                            <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p>
                         </header>
                         
                         <div class="profile-container">
-                            <h1>Home Page</h1>
                             <table class="table table-striped table-light custom-shadow">
                                 <thead class="thead-dark">
                                     <tr>
