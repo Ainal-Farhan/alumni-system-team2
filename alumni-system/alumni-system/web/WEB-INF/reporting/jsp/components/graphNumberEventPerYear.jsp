@@ -40,9 +40,9 @@
                 ]);
 
                 // Set options for Anthony's pie chart.
-                var options = {title:'Number of event per year',
-                               width: 600,
-                               height:400};
+                var options = { title:'Number of event per year',
+                                width: 450,
+                                height: 300};
 
                 // Instantiate and draw the chart for Anthony's pizza.
                 var chart = new google.visualization.BarChart(document.getElementById('chart_number_event'));

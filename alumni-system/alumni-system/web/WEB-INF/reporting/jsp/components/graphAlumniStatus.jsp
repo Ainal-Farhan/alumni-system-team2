@@ -36,7 +36,7 @@
                 ]);
 
                 // Optional; add a title and set the width and height of the chart
-                var options = {'title':'Alumni Status', 'width':600, 'height':400};
+                var options = {'title':'Alumni Status', 'width':450, 'height':300};
 
                 // Display the chart inside the <div> element with id="piechart"
                 var chart = new google.visualization.PieChart(document.getElementById('chart_alumni_status'));

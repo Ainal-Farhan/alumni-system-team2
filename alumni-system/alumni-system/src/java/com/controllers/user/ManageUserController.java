@@ -26,11 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.jdbc.utility.JDBCUtility;
-import java.io.File;
-import java.nio.file.Files;
 import java.sql.Blob;
-import org.apache.xml.security.exceptions.Base64DecodingException;
-import org.apache.xml.security.utils.Base64;
 
 
 @WebServlet(name = "ManageUserController", urlPatterns = {"/ManageUserController"})
@@ -205,7 +201,7 @@ public class ManageUserController extends HttpServlet {
             case "display":
                 {
                 
-                 ArrayList users = new ArrayList();
+                 ArrayList<User> users = new ArrayList<>();
                  ResultSet rs = getAllUser();
                 try{
                  while (rs.next()) 
