@@ -31,8 +31,9 @@
                 margin-right: auto;
                 margin-left: auto;
                 width: 80%;
-                padding: 50px 0 50px 150px;
+                padding: 5px 0 5px 150px;
             }
+            @media only screen and (max-width: 600px) {.container-custom {padding-left: 10px; padding-top: 110px;}}
         </style>
     </head>
     <body>
@@ -44,12 +45,16 @@
         %>
         
         <div class="container-custom">
-            <div class="jumbotron">
-                <h1 class="display-4">View Profile Page</h1>
-                
-                <div class="form-group row">
+            <nav class="navbar navbar-dark bg-dark">
+                <div style="height:36px">
+                    <p class="navbar-brand"><i class="fas fa-user"></i> ALUMNI INFORMATION</p>
+                </div>
+            </nav>
+            
+            <div class="jumbotron" style="padding: 5px 5px 5px 5px;">
+                <div class="row">
                     <div class="col center">
-                        <img src="AlumniController?requestType=requestImage" alt="profile picture" class="mx-auto d-block" width="200" height="200" style="margin-top:10px;margin-bottom:10px;border-radius: 50%;">
+                        <img src="AlumniController?requestType=requestImage" alt="profile picture" class="mx-auto d-block" width="250" height="250" style="margin-top:10px;margin-bottom:10px;border-radius: 50%;">
                     </div>
                     <div class="col">
                         <div class="form-group custom-shadow">

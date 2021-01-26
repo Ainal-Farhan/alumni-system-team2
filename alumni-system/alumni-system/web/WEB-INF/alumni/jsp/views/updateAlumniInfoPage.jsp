@@ -69,8 +69,13 @@
         <jsp:include page="../components/bootstrap4.jsp" />
         
         <div class="container-custom">
-            <div class="jumbotron">
-                <h1 class="display-4">Edit Alumni Information Page</h1>
+            <nav class="navbar navbar-dark bg-dark">
+                <div style="height:36px">
+                    <p class="navbar-brand"><i class="fas fa-user"></i> EDIT ALUMNI INFORMATION</p>
+                </div>
+            </nav>
+            
+            <div class="jumbotron" style="padding: 5px 5px 5px 5px;">
                 <form action="AlumniController" method="POST" onSubmit="return checkEitherImageIsSelected()">
                     <img id="profilePicture" src="AlumniController?requestType=requestImage" alt="profile picture" class="mx-auto d-block custom-shadow" width="200" height="200" style="margin-top:10px;margin-bottom:10px;border-radius: 50%;">
                     <span id="fileSelected"> Selected Image: None</span>

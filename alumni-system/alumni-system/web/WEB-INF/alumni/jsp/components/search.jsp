@@ -21,7 +21,7 @@
             <% String selectedSearchReq = ""; %>
             <% if(request.getAttribute("selectedSearchReq") != null) selectedSearchReq = (String)request.getAttribute("selectedSearchReq"); %>
             <div class="row">
-                <div class="col">
+                <div class="col-8">
                     <form class="form-inline" action="AlumniController" method="POST">
                         <input type="hidden" name="requestType" value="searchAlumni">
                         <input class="form-control mr-sm-2" type="search" name="searchInfo" placeholder="Search" aria-label="Search" required>
