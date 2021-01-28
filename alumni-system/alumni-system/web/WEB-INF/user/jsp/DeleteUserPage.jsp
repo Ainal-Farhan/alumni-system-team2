@@ -48,7 +48,7 @@
                 display: block;
                 margin-right: auto;
                 margin-left: auto;
-                padding-top: 30px;
+                padding-top: 5px;
             }
             .delete-user-container {
                 width: 95%;
@@ -60,6 +60,7 @@
                 box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
             }
             .header-home {
+                margin-top: -25px;
                 text-align: center;
             }
         </style>
@@ -82,54 +83,60 @@
             <div class="col-1">
                 <jsp:include page="../../allModules/sideNavigationBar.jsp" />
             </div>
-            <div class="col center-container">
-                <div class="jumbotron center-container">
-                    <!-- Header/Home -->
-                    <header class="header-home">
-                        <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
-                        <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br>
-                    </header>
-                    
-                    <div class="table-responsive delete-user-container">
-                        <h1>Delete User Page</h1>
-                        <table class="table table-striped table-light custom-shadow">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>USER ID</th>
-                                    <th>NAME</th>
-                                    <th>EMAIL</th>
-                                    <th>PHONE NUMBER</th>
-                                    <th>ROLE</th>
-                                    <th>DELETE</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% 
-                                int index=0;
-                                
-                                for(int i=0;i<users.size();i++){
-                                    User mp =(User)users.get(i);
-                                    
-                                    if(mp.getUserID().equals(user.getUserID())) {
-                                        continue;
-                                    }
-                                    
-                                    index++;
-                                %>
+            <div class="col">
+                <div class="center-container">
+                    <nav class="navbar navbar-dark bg-dark">
+                        <div style="height:36px;">
+                            <p class="navbar-brand"><i class="fas fa-user-minus"></i> DELETE A USER</p>
+                        </div>
+                    </nav>
+                    <div class="jumbotron">
+                        <!-- Header/Home -->
+                        <header class="header-home">
+                            <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
+                            <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p>
+                        </header>
 
-                                <tr >
-                                    <td><%= mp.getUserID() %></td>
-                                    <td><%= mp.getName() %></td>
-                                    <td><%= mp.getEmail()%></td>
-                                    <td><%= mp.getPhoneNum()%></td> 
-                                    <td><%= mp.getRole()%></td> 
-                                    <td><center><a href="ManageUserController?option=delete&id=<%= mp.getUserID() %>" class="btn btn-danger">DELETE <i class="fas fa-user-minus"></i></a></center></td>
-                                </tr>
-                                <% 
-                                }
-                                %>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive delete-user-container">
+                            <table class="table table-striped table-light custom-shadow">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>USER ID</th>
+                                        <th>NAME</th>
+                                        <th>EMAIL</th>
+                                        <th>PHONE NUMBER</th>
+                                        <th>ROLE</th>
+                                        <th>DELETE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% 
+                                    int index=0;
+
+                                    for(int i=0;i<users.size();i++){
+                                        User mp =(User)users.get(i);
+
+                                        if(mp.getUserID().equals(user.getUserID())) {
+                                            continue;
+                                        }
+
+                                        index++;
+                                    %>
+
+                                    <tr >
+                                        <td><%= mp.getUserID() %></td>
+                                        <td><%= mp.getName() %></td>
+                                        <td><%= mp.getEmail()%></td>
+                                        <td><%= mp.getPhoneNum()%></td> 
+                                        <td><%= mp.getRole()%></td> 
+                                        <td><center><a href="ManageUserController?option=delete&id=<%= mp.getUserID() %>" class="btn btn-danger">DELETE <i class="fas fa-user-minus"></i></a></center></td>
+                                    </tr>
+                                    <% 
+                                    }
+                                    %>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

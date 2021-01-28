@@ -13,7 +13,6 @@ import com.models.event.Charity;
 import com.models.event.Sponsor;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -119,6 +118,10 @@ public class ViewPageControl extends HttpServlet{
 	 * @param charityAmt
 	 * @param charityID
 	 * @param charityImgProof
+         * @param request
+         * @param response
+         * @throws javax.servlet.ServletException
+         * @throws java.io.IOException
 	 */
 	public void addNewDonor(String userName, String userID, String userEmail, String userPhoneNum, double charityAmt, int charityID, InputStream charityImgProof, HttpServletRequest request, HttpServletResponse response) 
                 throws ServletException, IOException {
@@ -140,6 +143,10 @@ public class ViewPageControl extends HttpServlet{
 	 * @param eventSponsorAmt
 	 * @param eventID
 	 * @param sponsorImgProof
+         * @param request
+         * @param response
+         * @throws javax.servlet.ServletException
+         * @throws java.io.IOException
 	 */
 	public void addNewSponsor(String userName, String userID, String userEmail, String userPhoneNum, double eventSponsorAmt, int eventID, InputStream sponsorImgProof, HttpServletRequest request, HttpServletResponse response) 
                 throws ServletException, IOException {
@@ -168,6 +175,10 @@ public class ViewPageControl extends HttpServlet{
 	 * @param userPhoneNum
 	 * @param eventID
 	 * @param joinImgProof
+         * @param request
+         * @param response
+         * @throws javax.servlet.ServletException
+         * @throws java.io.IOException
 	 */
 	public void addNewParticipant(String userName, String userID, String userEmail, String userPhoneNum, int eventID, InputStream joinImgProof, HttpServletRequest request, HttpServletResponse response) 
                 throws ServletException, IOException {

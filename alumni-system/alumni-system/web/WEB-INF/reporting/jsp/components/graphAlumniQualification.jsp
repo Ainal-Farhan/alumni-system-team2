@@ -40,9 +40,9 @@
                 ]);
 
                 // Set options for Sarah's pie chart.
-                var options = {title:'Alumni Qualification',
-                               width: 600,
-                               height:400,
+                var options = { title:'Alumni Qualification',
+                                width: 450,
+                                height: 300,
                                 pieHole: 0.4};
 
                 // Instantiate and draw the chart for Sarah's pizza.

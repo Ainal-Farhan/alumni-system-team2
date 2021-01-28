@@ -41,6 +41,7 @@
                 padding-top: 10px;
             }
             .header-home {
+                margin-top: -25px;
                 text-align: center;
             }
             .custom-shadow {
@@ -55,7 +56,7 @@
                 outline-width:0;
             } 
             .edit-profile-container {
-                width: 60%;
+                width: 100%;
                 display:block;
                 margin-right:auto;
                 margin-left:auto;
@@ -77,64 +78,36 @@
             <div class="col">
                 <!-- Page Content -->
                 <div class="center-container">
-                    <div class="jumbotron">
+                    <nav class="navbar navbar-dark bg-dark">
+                        <div style="height:36px">
+                            <p class="navbar-brand"><i class="far fa-edit"></i> EDIT PROFILE</p>
+                        </div>
+                    </nav>
+                    <div class="jumbotron">      
                         <!-- Header/Home -->
                         <header class="header-home">
                             <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
-                            <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br>
+                            <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p>
                         </header>
 
                         <div class="edit-profile-container">
-                            <h1>Edit Profile Page</h1>
                             <form name="form" action="ManageUserController" method="post" onsubmit="return validate()">
                                 <table class="table table-striped table-light custom-shadow">
                                     <thead class="thead-dark">
                                         <tr>
-                                            <th><div align="middle">Profile Information</div></th>
+                                            <th colspan="2"><div align="middle">Profile Information</div></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>
                                                 <div class="form-group row td-custom">
-                                                    <label for="userID" class="col-sm-4 col-form-label" style="font-weight: bolder;">USER ID</label>
-                                                    <div class="col-sm-8">
+                                                    <label for="userID" class="col-sm-5 col-form-label" style="font-weight: bolder;">USER ID</label>
+                                                    <div class="col-sm">
                                                         <input type="text" class="form-control-plaintext" name="userID" id="userID" required value="<jsp:getProperty name="user" property="userID"/>" readonly>
                                                     </div>
                                                 </div>
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group row td-custom">
-                                                    <label for="name" class="col-sm-4 col-form-label" style="font-weight: bolder;">NAME</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" class="form-control" name="name" id="name" required value="<jsp:getProperty name="user" property="name"/>">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group row td-custom">
-                                                    <label for="email" class="col-sm-4 col-form-label" style="font-weight: bolder;">EMAIL</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="email" class="form-control" name="email" id="email" required value="<jsp:getProperty name="user" property="email"/>">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group row td-custom">
-                                                    <label for="phoneNum" class="col-sm-4 col-form-label" style="font-weight: bolder;">PHONE NUMBER</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" class="form-control" name="phoneNum" id="phoneNum" required value="<jsp:getProperty name="user" property="phoneNum"/>">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <td>
                                                 <div class="form-group row td-custom">
                                                     <label for="role" class="col-sm-4 col-form-label" style="font-weight: bolder;">ROLE</label>
@@ -147,9 +120,17 @@
                                         <tr>
                                             <td>
                                                 <div class="form-group row td-custom">
-                                                    <label for="password" class="col-sm-4 col-form-label" style="font-weight: bolder;">PASSWORD</label>
+                                                    <label for="name" class="col-sm-5 col-form-label" style="font-weight: bolder;">NAME</label>
+                                                    <div class="col-sm">
+                                                        <input type="text" class="form-control" name="name" id="name" required value="<jsp:getProperty name="user" property="name"/>">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group row td-custom">
+                                                    <label for="phoneNum" class="col-sm-4 col-form-label" style="font-weight: bolder;">PHONE NUMBER</label>
                                                     <div class="col-sm-8">
-                                                        <input type="password" class="form-control" name="password" id="password" required value="<jsp:getProperty name="user" property="password"/>">
+                                                        <input type="text" class="form-control" name="phoneNum" id="phoneNum" required value="<jsp:getProperty name="user" property="phoneNum"/>">
                                                     </div>
                                                 </div>
                                             </td>
@@ -157,15 +138,38 @@
                                         <tr>
                                             <td>
                                                 <div class="form-group row td-custom">
-                                                    <label for="password2" class="col-sm-4 col-form-label" style="font-weight: bolder;">CONFIRM PASSWORD</label>
-                                                    <div class="col-sm-8">
+                                                    <label for="email" class="col-sm-5 col-form-label" style="font-weight: bolder;">EMAIL</label>
+                                                    <div class="col-sm">
+                                                        <input type="email" class="form-control" name="email" id="email" required value="<jsp:getProperty name="user" property="email"/>">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group row td-custom">
+                                                    <label for="password" class="col-sm-5 col-form-label" style="font-weight: bolder;">PASSWORD</label>
+                                                    <div class="col-sm">
+                                                        <input type="password" class="form-control" name="password" id="password" required value="<jsp:getProperty name="user" property="password"/>">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group row" style="height: 25px;">
+                                                    <label for="password2" class="col-sm-5 col-form-label" style="font-weight: bolder;">CONFIRM PASSWORD</label>
+                                                    <div class="col-sm">
                                                         <input type="password" class="form-control" name="password2" id="password2" required value="<jsp:getProperty name="user" property="password"/>">
                                                     </div>
                                                 </div>
                                             </td>
+                                            <td></td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td colspan="2">
                                                 <div class="form-group td-custom" align="middle" >
                                                     <span style="color:red; font-weight: bold; align-content: center;">
                                                         <br><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%><br>

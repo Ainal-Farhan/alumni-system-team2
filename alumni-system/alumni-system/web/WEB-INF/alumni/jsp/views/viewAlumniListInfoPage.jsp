@@ -30,7 +30,7 @@
                 margin-right: auto;
                 margin-left: auto;
                 width: 80%;
-                padding: 10px 0 10px 150px;
+                padding: 5px 0 0 150px;
             }
             
             .custom-shadow {
@@ -52,6 +52,7 @@
                 padding-top: 5px;
             }
             .header-home {
+                margin-top: -25px;
                 text-align: center;
             }
             @media only screen and (max-width: 600px) {.container-custom {padding-left: 10px; padding-top: 110px;}}
@@ -62,12 +63,17 @@
         <jsp:include page="../components/bootstrap4.jsp" />
         <div class="container-custom">
             <% String currentUserType = ((User)session.getAttribute("user")).getRole(); %>
+            <nav class="navbar navbar-dark bg-dark">
+                <div style="height:36px">
+                    <p class="navbar-brand"><i class="fas fa-users"></i> ALUMNI LIST</p>
+                </div>
+            </nav>
 
             <div class="jumbotron">
                 <!-- Header/Home -->
                 <header class="header-home">
                     <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
-                    <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br>
+                    <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p>
                 </header>
                 
                 <div class="search-container">
@@ -77,7 +83,6 @@
                 <div class="filter-container">
                     <%@include file="../components/filter.jsp" %>
                 </div>
-                <h1>List of Alumni</h1>
             <%  } %>
                 <div class="table-responsive custom-shadow">
                     <table class="table table-hover table-striped table-light" style="text-align:center;">

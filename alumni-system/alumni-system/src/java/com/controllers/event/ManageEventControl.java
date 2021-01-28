@@ -363,7 +363,7 @@ public class ManageEventControl extends HttpServlet{
             
             
            
-            if(eventAction=="Add")
+            if(eventAction.equals("Add"))
             {   
                 String message = "no";
                 HttpSession session = request.getSession();
@@ -372,7 +372,7 @@ public class ManageEventControl extends HttpServlet{
                 request.getRequestDispatcher("WEB-INF/event/jsp/AddEventInterface.jsp").forward(request, response);  
             }
             
-            else if(eventAction=="Update")
+            else if(eventAction.equals("Update"))
             {
                 String opt = "Update";
                 HttpSession session = request.getSession();
@@ -383,7 +383,7 @@ public class ManageEventControl extends HttpServlet{
                 //sendPage(request, response, "/UpdateEventInterface.jsp");    
             }
             
-            else if(eventAction=="Delete")
+            else if(eventAction.equals("Delete"))
             {
            
                 //fetchAllSavedEvent(request, response);

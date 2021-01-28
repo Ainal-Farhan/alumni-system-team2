@@ -41,7 +41,7 @@
             }
             .ridge {border-style: ridge;}
             .register-container {
-                width: 60%;
+                width: 80%;
                 display:block;
                 margin-right:auto;
                 margin-left:auto;
@@ -105,105 +105,110 @@
     <body>
         <!-- Page Content -->
         <div class="container">
-            <div class="jumbotron center">
-                <!-- Header/Home -->
-                <header class="header-home">
-                    <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
-                    <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br>
-                </header>
+            <div class="center">
+                <nav class="navbar navbar-dark bg-dark">
+                    <div style="height:36px">
+                        <p class="navbar-brand"><i class="fas fa-user-plus"></i> REGISTER</p>
+                    </div>
+                </nav>
+                <div class="jumbotron" style="padding-top:25px;padding-bottom:5px;">
 
-                <div class="register-container">
-                    <h1>Register Page</h1>
-                    <form name="form" action="ManageUserController" method="post" onsubmit="return validate()">
-                        <table class="table table-striped table-light custom-shadow">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th><div align="middle">Profile Information</div></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="form-group row td-custom">
-                                            <label for="name" class="col-sm-4 col-form-label" style="font-weight: bolder;">NAME</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" name="name" id="name" required>
+                    <!-- Header/Home -->
+                    <header class="header-home">
+                        <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
+                        <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p>
+                    </header>
+
+                    <div class="register-container">
+                        <form name="form" action="ManageUserController" method="post" onsubmit="return validate()">
+                            <table class="table table-striped table-light custom-shadow">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th colspan="2"><div align="middle">Profile Information</div></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group row td-custom">
+                                                <label for="name" class="col-sm-4 col-form-label" style="font-weight: bolder;">NAME</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" name="name" id="name" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group row td-custom">
-                                            <label for="email" class="col-sm-4 col-form-label" style="font-weight: bolder;">EMAIL</label>
-                                            <div class="col-sm-8">
-                                                <input type="email" class="form-control" name="email" id="email" required>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group row td-custom">
+                                                <label for="email" class="col-sm-4 col-form-label" style="font-weight: bolder;">EMAIL</label>
+                                                <div class="col-sm-8">
+                                                    <input type="email" class="form-control" name="email" id="email" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group row td-custom">
-                                            <label for="phoneNum" class="col-sm-4 col-form-label" style="font-weight: bolder;">PHONE NUMBER</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" name="phoneNum" id="phoneNum" required>
+                                        </td>
+                                        <td>
+                                            <div class="form-group row td-custom">
+                                                <label for="phoneNum" class="col-sm-5 col-form-label" style="font-weight: bolder;">PHONE NUMBER</label>
+                                                <div class="col-sm">
+                                                    <input type="text" class="form-control" name="phoneNum" id="phoneNum" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group row td-custom">
-                                            <label for="password" class="col-sm-4 col-form-label" style="font-weight: bolder;">PASSWORD</label>
-                                            <div class="col-sm-8">
-                                                <input type="password" class="form-control" name="password" id="password" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group row td-custom">
+                                                <label for="password" class="col-sm-4 col-form-label" style="font-weight: bolder;">PASSWORD</label>
+                                                <div class="col-sm">
+                                                    <input type="password" class="form-control" name="password" id="password" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group row td-custom">
-                                            <label for="password2" class="col-sm-4 col-form-label" style="font-weight: bolder;">CONFIRM PASSWORD</label>
-                                            <div class="col-sm-8">
-                                                <input type="password" class="form-control" name="password2" id="password2" required>
+                                        </td>
+                                        <td>
+                                            <div class="form-group row td-custom">
+                                                <label for="password2" class="col-sm-5 col-form-label" style="font-weight: bolder;">CONFIRM PASSWORD</label>
+                                                <div class="col-sm">
+                                                    <input type="password" class="form-control" name="password2" id="password2" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group row td-custom">
-                                            <label for="role" class="col-sm-4 col-form-label" style="font-weight: bolder;">ROLE</label>                                            
-                                            <div class="form-check form-check-inline" style="padding-left: 20px;">
-                                                <input class="form-check-input" type="radio" name="role" id="role" value="ALUMNI" checked>
-                                                <label class="form-check-label" for="role">ALUMNI</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group row td-custom">
+                                                <label for="role" class="col-sm-4 col-form-label" style="font-weight: bolder;">ROLE</label>                                            
+                                                <div class="form-check form-check-inline" style="padding-left: 20px;">
+                                                    <input class="form-check-input" type="radio" name="role" id="role" value="ALUMNI" checked>
+                                                    <label class="form-check-label" for="role">ALUMNI</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="role" id="role" value="STAFF">
+                                                    <label class="form-check-label" for="role">STAFF</label>
+                                                </div>
                                             </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="role" id="role" value="STAFF">
-                                                <label class="form-check-label" for="role">STAFF</label>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="form-group" align="middle" >
+                                                <span style="color:red; font-weight: bold; align-content: center;">
+                                                    <br><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%><br>
+                                                </span>
+
+                                                <p>Already have an account? <a href="ManageUserController?option=viewLoginPage">Login here</a>.</p>
+                                                <input type="text" name="option" id="option" value = "register" hidden>
+                                                <button type="submit" class="btn btn-success" name="button"><i class="fas fa-user-edit"></i> Submit</button>
+                                                <button type="reset" class="btn btn-danger" name="button2"><i class="fas fa-eraser"></i> Reset</button>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group" align="middle" >
-                                            <span style="color:red; font-weight: bold; align-content: center;">
-                                                <br><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%><br>
-                                            </span>
-                                            
-                                            <p>Already have an account? <a href="ManageUserController?option=viewLoginPage">Login here</a>.</p>
-                                            <input type="text" name="option" id="option" value = "register" hidden>
-                                            <button type="submit" class="btn btn-success" name="button"><i class="fas fa-user-edit"></i> Submit</button>
-                                            <button type="reset" class="btn btn-danger" name="button2"><i class="fas fa-eraser"></i> Reset</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>                                
-                        </table>
-                    </form>
+                                        </td>
+                                    </tr>
+                                </tbody>                                
+                            </table>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
