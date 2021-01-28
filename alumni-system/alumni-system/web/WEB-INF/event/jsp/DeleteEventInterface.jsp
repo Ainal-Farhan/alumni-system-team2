@@ -177,7 +177,7 @@
                     <br>UTM Skudai, 81310 Johor,
                     <br>Malaysia.</b></p>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <p><b>Tel: +6075557351
                     <br>Fax: +6075566155
                     <br>Email: fabu@utm.my</b></p>                                             
