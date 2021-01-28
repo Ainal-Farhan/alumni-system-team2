@@ -46,16 +46,44 @@
         <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
         <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        
+        <style>
+            .custom-shadow {
+                box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            }
+            .center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .container-custom {
+                display: block;
+                margin-right: auto;
+                margin-left: auto;
+                width: 80%;
+                padding: 10px 0 10px 150px;
+            }
+            .header-home {
+                text-align: center;
+            }
+            @media only screen and (max-width: 600px) {.container-custom {padding-left: 10px; padding-top: 110px;}}
+        </style>
     </head>
     <body>
-        <nav class="navbar sticky-top navbar-dark bg-primary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Staff Management</a>
-            </div>
-        </nav>
-        <div class="menu-container">
-            <img class="menu-container-pic" src="assets/images\UTMFabu.png">
-        </div>
+        <%  if(session.getAttribute("user") != null) { %>
+
+        <jsp:include page="../../allModules/sideNavigationBar.jsp" />
+        
+        <div class="container-custom">
+                <div class="jumbotron">
+                    <!-- Header/Home -->
+                    <header class="header-home">
+                        <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
+                        <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br>
+                    </header>
+
 
         <% String message = (String)session.getAttribute("alertMsg");%>
 
@@ -189,7 +217,9 @@
             </div>
             <div class="row align-items-end"></div>
     </div>
-            
+   </form>
+  </div>
+</div>            
 <%--        <table align="center" width="500" border="5" cellspacing="5" cellpadding="5">
           
         <tr>
@@ -351,31 +381,30 @@
         </tr>
         
       </table>--%>
-    </form>
     
-    
-    <div class="p-3 mb-2 bg-primary text-dark">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-9">
-                            <p><b>Faculty of Built Environment and Surveying,
-                            <br>Universiti Teknologi Malaysia,
-                            <br>UTM Skudai, 81310 Johor,
-                            <br>Malaysia.</b></p>
-                        </div>
-                        <div class="col-sm-2">
-                            <p><b>Tel: +6075557351
-                            <br>Fax: +6075566155
-                            <br>Email: fabu@utm.my</b></p>                                             
-                        <div class="logo">
-                            <a href="https://www.facebook.com/built.surveyUTM/"><img class="sizelogo" src="assets/images\facebook.png" width="35px" height="35px"></a>
-                            <a href="https://www.flickr.com/photos/126408255@N08/"><img class="sizelogo" src="assets/images\flickr.png" width="35px" height="35px"></a>
-                            <a href="https://www.pinterest.com/fabutm/"><img class="sizelogo" src="assets/images\Pinterest.png" width="35px" height="35px"></a>
-                            <a href="http://www.youtube.com/user/fabutmskudai"><img class="sizelogo" src="assets/images\Youtube.png" width="35px" height="35px"></a>
-                        </div>
-                        </div>
-                    </div>
-                </div>              
+    <div class="fixed p-3 mb-0 bg-light text-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <p><b>Faculty of Built Environment and Surveying,
+                    <br>Universiti Teknologi Malaysia,
+                    <br>UTM Skudai, 81310 Johor,
+                    <br>Malaysia.</b></p>
+                </div>
+                <div class="col-sm-2">
+                    <p><b>Tel: +6075557351
+                    <br>Fax: +6075566155
+                    <br>Email: fabu@utm.my</b></p>                                             
+                <div class="logo">
+                    <a href="https://www.facebook.com/built.surveyUTM/"><img class="sizelogo" src="assets/images\facebook.png" width="35px" height="35px"></a>
+                    <a href="https://www.flickr.com/photos/126408255@N08/"><img class="sizelogo" src="assets/images\flickr.png" width="35px" height="35px"></a>
+                    <a href="https://www.pinterest.com/fabutm/"><img class="sizelogo" src="assets/images\Pinterest.png" width="35px" height="35px"></a>
+                    <a href="http://www.youtube.com/user/fabutmskudai"><img class="sizelogo" src="assets/images\Youtube.png" width="35px" height="35px"></a>
+                </div>
+                </div>
+            </div>
+        </div>              
     </div>
+<%  } %>
     </body>
 </html>

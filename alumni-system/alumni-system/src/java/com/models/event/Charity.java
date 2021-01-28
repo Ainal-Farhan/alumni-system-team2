@@ -565,7 +565,7 @@ public class Charity extends HttpServlet{
                         }
                         else if(opt.equals("View"))
                         {
-                            //response.sendRedirect(request.getContextPath() + "/ViewPageInterface.jsp");
+                            request.getRequestDispatcher("WEB-INF/event/jsp/ViewPageInterface.jsp").forward(request, response); 
                         }
 
                 /*for (int counter = 0; counter < events.size(); counter++) { 		      

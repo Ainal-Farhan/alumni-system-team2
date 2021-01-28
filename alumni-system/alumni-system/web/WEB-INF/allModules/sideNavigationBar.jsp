@@ -49,13 +49,16 @@
                 <p>MANAGE USER</p>
             </a>
             <%    } %>
+            
+            <%    if((user.getRole().equalsIgnoreCase("ADMIN"))||(user.getRole().equalsIgnoreCase("STAFF"))) { %>
             <a href="ViewPageControl?option=managePage" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
                 <i class="far fa-edit w3-xxlarge"></i>
                 <p>MANAGE EVENT</p>
             </a>
+            <%    } %>
             
             <a href="ViewPageControl?option=viewPage" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
-                <i class="far fa-edit w3-xxlarge"></i>
+                <i class="far fa-calendar-alt w3-xxlarge"></i>
                 <p>VIEW EVENT</p>
             </a>
             

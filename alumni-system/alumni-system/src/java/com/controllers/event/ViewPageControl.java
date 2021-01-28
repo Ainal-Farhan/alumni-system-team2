@@ -57,7 +57,14 @@ public class ViewPageControl extends HttpServlet{
                 }
             case "viewPage":
                 {
-                    request.getRequestDispatcher("WEB-INF/event/jsp/ViewPageInterface.jsp").forward(request, response);
+                    String opt = "View";
+                    
+                    session.setAttribute("opt", opt);
+                    String message = "no";
+                    session.setAttribute("alertMsg", message);
+
+                    event.searchAllSavedEvent(request, response);
+                    //request.getRequestDispatcher("WEB-INF/event/jsp/ViewEventInterface.jsp").forward(request, response);
                     break;
                 }
             case "Main Menu":
@@ -65,17 +72,23 @@ public class ViewPageControl extends HttpServlet{
                     request.getRequestDispatcher("WEB-INF/user/jsp/Homepage.jsp").forward(request, response);
                     break;
                 }
-            /*case "viewPage":
+            case "viewEvent":
+                {
+                    String opt = "EventSeeMore";
+                    
+                    session.setAttribute("opt", opt);
+                    String message = "no";
+                    session.setAttribute("alertMsg", message);
+                    int eventID = Integer.parseInt(request.getParameter("eventID"));
+                    event.searchSavedEvent(eventID, request, response);   
+                    break;
+                }
+            case "viewCharity":
                 {
                     request.getRequestDispatcher("WEB-INF/event/jsp/MainStaffInterface.jsp").forward(request, response);
                     break;
                 }
-            case "viewPage":
-                {
-                    request.getRequestDispatcher("WEB-INF/event/jsp/MainStaffInterface.jsp").forward(request, response);
-                    break;
-                }*/
-                            
+                  
             default:
                 break;
             }
@@ -310,6 +323,27 @@ public class ViewPageControl extends HttpServlet{
                    
                 addNewDonor (donorName, ID, donorEmail, donorPhoneNum, donorAmt, charityID,  charityImgProof, request, response);
                 
+            }
+            else if (request.getParameter("buttonBackEvent") != null) //sponsor event
+            {
+                String opt = "EventSeeMore";
+                HttpSession session = request.getSession();
+                session.setAttribute("opt", opt);
+                String message = "no";
+                session.setAttribute("alertMsg", message);
+                int eventID = Integer.parseInt(request.getParameter("eventID"));
+                event.searchSavedEvent(eventID, request, response);   
+                
+            }
+            else if (request.getParameter("buttonBackCharity") != null) //sponsor event
+            {
+                String opt = "CharitySeeMore";
+                HttpSession session = request.getSession();
+                session.setAttribute("opt", opt);
+                String message = "no";
+                session.setAttribute("alertMsg", message);
+                int charityID = Integer.parseInt(request.getParameter("charityID"));
+                charity.searchSavedCharity(charityID, request, response);           
             }
         }
 

@@ -395,6 +395,12 @@ public class ManageEventControl extends HttpServlet{
                 event.searchAllSavedEvent(request, response);
                 //sendPage(request, response, "/DeleteEventInterface.jsp");  
             }
+            else
+            {
+                try (PrintWriter out = response.getWriter()) {
+                out.println("Error!");
+            }
+            }
 
 	}
        
