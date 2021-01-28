@@ -118,15 +118,15 @@ public class Sponsor extends HttpServlet{
             
             String driver = "com.mysql.jdbc.Driver";
 
-            String dbName = "y3L2hmfmkc";
+            /*String dbName = "y3L2hmfmkc";
             String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
             String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";
+            String password = "dPm3whaoYd";*/
             
-            /*String dbName = "eventmoduledb";
+            String dbName = "alumni_module-db";
             String url = "jdbc:mysql://localhost/" + dbName + "?";
             String userName = "root";
-            String password = "";*/
+            String password = "";
 
             
             jdbcUtility = new JDBCUtility(driver,

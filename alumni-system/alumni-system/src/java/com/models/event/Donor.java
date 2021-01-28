@@ -115,17 +115,17 @@ public class Donor extends HttpServlet{
 	public void addDonor(String userName1, String userID, String userEmail, String userPhoneNum, double charityAmt, int charityID, InputStream charityImgProof, HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException{
 
-             String driver = "com.mysql.jdbc.Driver";
+            String driver = "com.mysql.jdbc.Driver";
 
-            String dbName = "y3L2hmfmkc";
+            /*String dbName = "y3L2hmfmkc";
             String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
             String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";
+            String password = "dPm3whaoYd";*/
             
-            /*String dbName = "eventmoduledb";
+            String dbName = "alumni_module-db";
             String url = "jdbc:mysql://localhost/" + dbName + "?";
             String userName = "root";
-            String password = "";*/
+            String password = "";
 
             
             jdbcUtility = new JDBCUtility(driver,

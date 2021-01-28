@@ -636,7 +636,7 @@ public class Event extends HttpServlet{
             } 
             catch (NullPointerException e) {
             try (PrintWriter out = response.getWriter()) {
-                    out.println("MAX USER BODOH!");
+                    out.println("MAX USER!");
                 } 
             }
                 
@@ -786,7 +786,7 @@ public class Event extends HttpServlet{
             } 
             catch (NullPointerException e) {
             try (PrintWriter out = response.getWriter()) {
-                    out.println("MAX USER BODOH!");
+                    out.println("MAX USER!");
                 } 
             }        
 	}

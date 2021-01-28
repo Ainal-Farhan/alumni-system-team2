@@ -34,16 +34,43 @@
         <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
         <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        
+        <style>
+            .custom-shadow {
+                box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            }
+            .center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .container-custom {
+                display: block;
+                margin-right: auto;
+                margin-left: auto;
+                width: 80%;
+                padding: 10px 0 10px 150px;
+            }
+            .header-home {
+                text-align: center;
+            }
+            @media only screen and (max-width: 600px) {.container-custom {padding-left: 10px; padding-top: 110px;}}
+        </style>
     </head>
     <body>
-        <nav class="navbar sticky-top navbar-dark bg-primary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Staff Management</a>
-            </div>
-        </nav>
-        <div class="menu-container">
-            <img class="menu-container-pic" src="assets/images\UTMFabu.png">
-        </div>
+        <%  if(session.getAttribute("user") != null) { %>
+
+        
+        
+        
+                <div class="jumbotron">
+                    <!-- Header/Home -->
+                    <header class="header-home">
+                        <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
+                        <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br>
+                    </header>
         
         <div class="row align-items-start justify-content-center"><h4><b>Update and Delete Charity</b></h4></div>
         
@@ -130,8 +157,8 @@
         </a>       
       </div>
     </table>
-    
-    <div class="p-3 mb-2 bg-primary text-dark">
+                </div>
+    <div class="fixed p-3 mb-0 bg-light text-dark">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-9">
@@ -154,5 +181,6 @@
                     </div>
                 </div>              
     </div>
+<%  } %>
     </body>
 </html>
