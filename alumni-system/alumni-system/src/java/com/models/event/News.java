@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 package com.models.event;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.Connection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,19 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 import com.google.gson.Gson;
 
-import com.controllers.event.*;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
-import javax.swing.ImageIcon;
-import jdbc.JDBCUtility;
+import com.jdbc.utility.JDBCUtility;
 
 /**
  *
@@ -117,26 +107,7 @@ public class News extends HttpServlet{
 	public void createNews(String newsTitle, String newsCategory, String newsArticle, String newsWebsite, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
+            con = JDBCUtility.getCon();
             
         
             sqlStatement = "INSERT INTO news(newsTitle, newsCategory, newsArticle, newsWebsite) VALUES(?, ?, ?, ?)";
@@ -191,26 +162,7 @@ public class News extends HttpServlet{
 	public void searchSavedNews(int newsID, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
+            con = JDBCUtility.getCon();
             
             sqlStatement ="SELECT * FROM news WHERE (newsID = ?)";
             HttpSession session = request.getSession();
@@ -280,27 +232,7 @@ public class News extends HttpServlet{
 	public void updateSavedNews(String newsTitle, String newsCategory, String newsArticle, String newsWebsite, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            News news = new News();
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
-            
+            con = JDBCUtility.getCon();
         
             sqlStatement = "UPDATE news SET newsTitle = ?, newsCategory = ?, newsArticle = ?, newsWebsite = ? WHERE newsID = ?";
             
@@ -348,26 +280,7 @@ public class News extends HttpServlet{
 	public void deleteNews(int newsID, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
             
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
+            con = JDBCUtility.getCon();
             
             sqlStatement ="DELETE FROM news WHERE (newsID = ?)";
             
@@ -414,25 +327,7 @@ public class News extends HttpServlet{
 	public void searchAllSavedNews(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
+            con = JDBCUtility.getCon();
             
             sqlStatement ="SELECT * FROM news";
             HttpSession session = request.getSession();           
@@ -496,30 +391,12 @@ public class News extends HttpServlet{
             
            
             
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
+            con = JDBCUtility.getCon();
             
             sqlStatement ="SELECT * FROM news";
             HttpSession session = request.getSession();           
         
-            ArrayList<News> newslist = new ArrayList<News>();
+            ArrayList<News> newslist = new ArrayList<>();
             News news = new News(); 
 
             try {

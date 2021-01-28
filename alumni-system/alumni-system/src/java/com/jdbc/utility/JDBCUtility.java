@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -17,11 +18,6 @@ import java.util.logging.Logger;
  */
 public class JDBCUtility {
     private static Connection con = null;
-    
-//               String dbName = "Q5XZNrd9uF";
-//               String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-//               String userName = "Q5XZNrd9uF";
-//               String password = "KsH8OJBw10";
 
     private static final String DB_NAME = "ainalfa_alumni_module-db";
     private static final String HOST = "johnny.heliohost.org";
@@ -38,20 +34,6 @@ public class JDBCUtility {
             "ainal3@123",
             "ainal4@123"
         };
-               
-//                String dbName = "alumni_module-db";
-//                String host = "localhost";
-//                String port = "3307";
-//                String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?useTimeZone=true&serverTimezone=UTC&autoReconnect=true&useSSL=false";
-//                String userName = "root";
-//                String password = "";
-               
-//                String dbName = "alumni_module-db";
-//                String host = "localhost";
-//                String port = "3307";
-//                String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?useTimeZone=true&serverTimezone=UTC&autoReconnect=true&useSSL=false";
-//                String userName = "root";
-//                String password = "";
         
     public static Connection getCon() {
         try {
@@ -113,7 +95,105 @@ public class JDBCUtility {
         
         return con; 
  }
+    
     public static void jdbcConClose() {
 	JDBCUtility.con = null;
+    }
+    
+    public  boolean jdbcInsert(String sqlInsert, Connection con)
+    {
+    	try
+	{
+            Statement insertStmt = con.createStatement();
+            insertStmt.executeUpdate(sqlInsert);
+            insertStmt.close();
+            return true;
+	}
+	catch (SQLException ex)
+	{
+            while (ex != null)
+            {
+		System.out.println ("SQLState: " +
+		ex.getSQLState ());
+		System.out.println ("Message:  " +
+		ex.getMessage ());
+		System.out.println ("Vendor:   " +
+		ex.getErrorCode ());
+                ex = ex.getNextException ();
+		System.out.println ("");
+            }
+
+            System.out.println(sqlInsert);
+            return false;
+	}
+	catch (java.lang.Exception ex)
+	{
+            ex.printStackTrace ();
+            return false;
+	}
+    }    
+    
+    public boolean jdbcUpdate(String sqlUpdate, Connection con)
+    {
+	try
+	{
+            Statement updateStmt = con.createStatement();
+	    updateStmt.executeUpdate(sqlUpdate);
+            updateStmt.close();
+            return true;
+	}
+	catch (SQLException ex)
+	{
+            while (ex != null)
+            {
+                System.out.println ("SQLState: " +
+		ex.getSQLState ());
+		System.out.println ("Message:  " +
+		ex.getMessage ());
+		System.out.println ("Vendor:   " +
+		ex.getErrorCode ());
+		ex = ex.getNextException ();
+		System.out.println ("");
+            }
+
+            return false;
+	}
+	catch (java.lang.Exception ex)
+	{
+            ex.printStackTrace ();
+            return false;
+	}
+    }
+
+    public boolean jdbcDelete(String sqlDelete, Connection con)
+    {
+        try
+	{
+            Statement deleteStmt = con.createStatement();
+	    deleteStmt.executeUpdate(sqlDelete);
+            deleteStmt.close();
+            return true;
+	}
+	catch (SQLException ex)
+	{
+            while (ex != null)
+            {
+            	System.out.println ("SQLState: " +
+		ex.getSQLState ());
+                System.out.println ("Message:  " +
+		ex.getMessage ());
+		System.out.println ("Vendor:   " +
+		ex.getErrorCode ());
+		ex = ex.getNextException ();
+		System.out.println ("");
+            }
+
+            return false;
+	}
+	catch (java.lang.Exception ex)
+	{
+            ex.printStackTrace ();
+            return false;
+	}
     }
 }

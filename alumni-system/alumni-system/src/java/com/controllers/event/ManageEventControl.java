@@ -16,16 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-import jdbc.JDBCUtility;
 /**
  *
  * @author Amir Syafiq
@@ -36,7 +30,6 @@ public class ManageEventControl extends HttpServlet{
    
         Event event = new Event();
 
-        private JDBCUtility jdbcUtility;
         private Connection con;
 
         protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -361,8 +354,6 @@ public class ManageEventControl extends HttpServlet{
 	public void compareEventAction(String eventAction, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
             
-            
-           
             if(eventAction.equals("Add"))
             {   
                 String message = "no";
@@ -385,7 +376,6 @@ public class ManageEventControl extends HttpServlet{
             
             else if(eventAction.equals("Delete"))
             {
-           
                 //fetchAllSavedEvent(request, response);
                 String opt = "Delete";
                 HttpSession session = request.getSession();

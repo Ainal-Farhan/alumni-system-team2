@@ -32,12 +32,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel='stylesheet' href='style.css'/>
         
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="assets/css/main.css">
-        <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <jsp:include page="../../allModules/bootstrap4.jsp" />
         
         <style>
             .custom-shadow {
@@ -67,12 +62,19 @@
         <jsp:include page="../../allModules/sideNavigationBar.jsp" />
         
         <div class="container-custom">
-                <div class="jumbotron">
-                    <!-- Header/Home -->
-                    <header class="header-home">
-                        <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
-                        <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br>
-                    </header>
+            
+            <nav class="navbar navbar-dark bg-dark">
+                <div style="height:36px">
+                    <p class="navbar-brand">SPONSOR EVENT</p>
+                </div>
+            </nav>
+            
+            <div class="jumbotron" style="padding-top:25px;padding-bottom: 10px;">
+                <!-- Header/Home -->
+                <header class="header-home">
+                    <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
+                    <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p>
+                </header>
     
     <% 
         int eventID =(Integer)session.getAttribute("eventIDSponsor");
@@ -94,7 +96,6 @@
                 <div class="col">
                     <div class="card mb-2 bg-light text-dark" style="width: auto;">
                         <div class="card-body">
-                            <h4 class="card-title" style="text-align: center;"><b>Sponsor Event</b></h4>
                             <div class="row g-2 p-2">
                                 <div class="col">
                                   <div class="form-floating">
@@ -133,7 +134,7 @@
                                 <div class="col-md">
                                   <div class="form-floating">
                                     <label for="floatingInput">Proof of Sponsor Payment</label>
-                                    <input type="file" class="form-control" id="floatingInput" placeholder="Upload Proof of Payment" name="sponsorImgProofImage" size="100" required>                                    
+                                    <input type="file" class="form-control" style="height:41px;" id="floatingInput" placeholder="Upload Proof of Payment" name="sponsorImgProofImage" size="100" required>                                    
                                   </div>
                                 </div>
                             </div>
@@ -254,29 +255,7 @@
     </table>
     </form>--%>
     
-    <div class="fixed p-3 mb-0 bg-light text-dark">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-9">
-                            <p><b>Faculty of Built Environment and Surveying,
-                            <br>Universiti Teknologi Malaysia,
-                            <br>UTM Skudai, 81310 Johor,
-                            <br>Malaysia.</b></p>
-                        </div>
-                        <div class="col-sm-2">
-                            <p><b>Tel: +6075557351
-                            <br>Fax: +6075566155
-                            <br>Email: fabu@utm.my</b></p>                                             
-                        <div class="logo">
-                            <a href="https://www.facebook.com/built.surveyUTM/"><img class="sizelogo" src="assets/images\facebook.png" width="35px" height="35px"></a>
-                            <a href="https://www.flickr.com/photos/126408255@N08/"><img class="sizelogo" src="assets/images\flickr.png" width="35px" height="35px"></a>
-                            <a href="https://www.pinterest.com/fabutm/"><img class="sizelogo" src="assets/images\Pinterest.png" width="35px" height="35px"></a>
-                            <a href="http://www.youtube.com/user/fabutmskudai"><img class="sizelogo" src="assets/images\Youtube.png" width="35px" height="35px"></a>
-                        </div>
-                        </div>
-                    </div>
-                </div>              
-    </div>
+    <jsp:include page="../../allModules/footer.jsp" />
 <%  } %>
     </body>
 </html>

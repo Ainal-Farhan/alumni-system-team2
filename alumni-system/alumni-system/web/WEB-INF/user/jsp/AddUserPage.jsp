@@ -221,10 +221,8 @@
                 } 
             } 
         </script> 
-  </div>
-
-<!-- END PAGE CONTENT -->
-</div>
+        
+        <jsp:include page="../../allModules/footer.jsp" />
 
     </body>
 </html>

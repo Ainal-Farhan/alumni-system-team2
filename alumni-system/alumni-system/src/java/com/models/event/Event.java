@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 package com.models.event;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.Connection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,19 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 import com.google.gson.Gson;
 
-import com.controllers.event.*;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
-import javax.swing.ImageIcon;
-import jdbc.JDBCUtility;
+import com.jdbc.utility.JDBCUtility;
 /**
  *
  * @author Amir Syafiq
@@ -38,10 +30,6 @@ import jdbc.JDBCUtility;
 
 @WebServlet(name = "Event", urlPatterns = {"/Event"})
 public class Event extends HttpServlet{
-    
-    
-        
-        private JDBCUtility jdbcUtility;
         private Connection con;
         private String sqlStatement;
         PreparedStatement preparedStatementInsert = null;
@@ -238,28 +226,8 @@ public class Event extends HttpServlet{
 	public void createEvent(int eventCapacity, String eventCategory, String eventDate, String eventDescription, double eventFee, InputStream eventImage, String eventOrganizer, String eventTime, String eventTitle, String eventVenue, boolean eventSponsor, String eventWebsite, double eventSponsorPackageAmt, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
+            con = JDBCUtility.getCon();
             
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
-            
-        
             sqlStatement = "INSERT INTO event(eventTitle, eventDescription, eventCategory, eventDate, eventTime, eventVenue, eventCapacity, eventFee, eventOrganizer, eventImage, eventWebsite, eventSponsor, eventSponsorPackageAmt) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             boolean insertSuccess = false;
             
@@ -328,28 +296,8 @@ public class Event extends HttpServlet{
 	public void updateSavedEvent(int eventCapacity, String eventCategory, String eventDate, String eventDescription, double eventFee, InputStream eventImage, String eventOrganizer, String eventTime, String eventTitle, String eventVenue, boolean eventSponsor, String eventWebsite, double eventSponsorPackageAmt, HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
             
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
+            con = JDBCUtility.getCon();
             
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            Event event = new Event();
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
-            
-        
             sqlStatement = "UPDATE event SET eventTitle = ?, eventDescription = ?, eventCategory = ?, eventDate = ?, eventTime = ?, eventVenue = ?, eventCapacity = ?, eventFee = ?, eventOrganizer = ?, eventImage = ?, eventWebsite = ?, eventSponsor = ?, eventSponsorPackageAmt = ? WHERE eventID = ?";
             
             try {
@@ -407,27 +355,7 @@ public class Event extends HttpServlet{
 	public void deleteEvent(int eventID, HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
 
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
-            
+            con = JDBCUtility.getCon();
         
             sqlStatement = "DELETE FROM event WHERE (eventID = ?)";
             
@@ -472,26 +400,7 @@ public class Event extends HttpServlet{
 	public void searchSavedEvent(int eventID, HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException{
                 
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
+            con = JDBCUtility.getCon();
             
             sqlStatement ="SELECT * FROM event WHERE (eventID = ?)";
             HttpSession session = request.getSession();
@@ -587,26 +496,7 @@ public class Event extends HttpServlet{
 	public void updateSponsorGatheredAmt(int eventID, double eventSponsorGatheredAmt1, HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException{
 
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
+            con = JDBCUtility.getCon();
             
             sqlStatement ="SELECT * FROM event WHERE (eventID = ?)";
             /*try (PrintWriter out = response.getWriter()) {
@@ -692,26 +582,7 @@ public class Event extends HttpServlet{
 	public void updateEventCapacity(int eventID, HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
             
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
+            con = JDBCUtility.getCon();
             
             sqlStatement ="SELECT * FROM event WHERE (eventID = ?)";
             /*try (PrintWriter out = response.getWriter()) {
@@ -794,32 +665,13 @@ public class Event extends HttpServlet{
         public void searchAllSavedEvent(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
+            con = JDBCUtility.getCon();
             
             sqlStatement ="SELECT * FROM event";
             HttpSession session = request.getSession();
             
         
-            ArrayList<Event> eventlist = new ArrayList<Event>();
+            ArrayList<Event> eventlist = new ArrayList<>();
             Event event = new Event(); 
             
             //boolean insertSuccess = false;
@@ -893,27 +745,7 @@ public class Event extends HttpServlet{
         public ArrayList<Event> getAllSavedEvent(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             
-           
-            
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
+            con = JDBCUtility.getCon();
             
             sqlStatement ="SELECT * FROM event";
             HttpSession session = request.getSession();           
