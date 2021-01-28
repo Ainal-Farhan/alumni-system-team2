@@ -685,7 +685,7 @@ public class Charity extends HttpServlet{
             jdbcUtility.jdbcConnect();
             con = jdbcUtility.jdbcGetConnection();
             
-            sqlStatement ="SELECT * FROM charity WHERE (chartyID = ?)";
+            sqlStatement ="SELECT * FROM charity WHERE (charityID = ?)";
             /*try (PrintWriter out = response.getWriter()) {
                         out.println(eventCategory);
                     }*/
