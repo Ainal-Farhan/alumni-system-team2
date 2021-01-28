@@ -75,12 +75,20 @@
         <jsp:include page="../../allModules/sideNavigationBar.jsp" />
         
         <div class="container-custom">
-                <div class="jumbotron">
-                    <!-- Header/Home -->
-                    <header class="header-home">
-                        <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
-                        <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br>
-                    </header>
+            
+            <nav class="navbar navbar-dark bg-dark">
+                <div style="height:36px">
+                    <p class="navbar-brand">UPDATE NEWS</p>
+                </div>
+            </nav>
+            
+            <div class="jumbotron" style="padding-top:25px;padding-bottom: 0;">
+                <!-- Header/Home -->
+                <header class="header-home">
+                    <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
+                    <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p>
+                </header>
+                
         <table align="center" cellpadding="5" cellspacing="5" border="1">
         <%ArrayList<News> newslist = (ArrayList<News>)session.getAttribute("newslistupdate");
         
@@ -94,7 +102,6 @@
                 <div class="col">
                     <div class="card mb-2 bg-light text-dark" style="width: auto;">
                         <div class="card-body">
-                            <h4 class="card-title" style="text-align: center;"><b>Update News</b></h4>
                             <div class="row g-2 p-2">
                                 <div class="col">
                                   <div class="form-floating">

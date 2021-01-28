@@ -8,10 +8,8 @@ package com.models.event;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -19,8 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import jdbc.JDBCUtility;
+import com.jdbc.utility.JDBCUtility;
 
 /**
  *
@@ -29,7 +26,6 @@ import jdbc.JDBCUtility;
 @WebServlet(name = "Participant", urlPatterns = {"/Participant"})
 public class Participant extends HttpServlet{
     
-        private JDBCUtility jdbcUtility;
         private Connection con;
         private String sqlStatement;
         PreparedStatement preparedStatementInsert = null;
@@ -109,26 +105,7 @@ public class Participant extends HttpServlet{
 	public void addParticipant(String userName1, String userID, String userEmail, String userPhoneNum, int eventID, InputStream joinImgProof, HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException{
 
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
+            con = JDBCUtility.getCon();
             
             sqlStatement ="INSERT into participant(participantName, participantID, participantEmail, participantPhoneNum, eventID, joinImgProof) VALUES(?, ?, ?, ?, ?, ?)";
           
