@@ -9,7 +9,7 @@
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "-08:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `alumni`
 --
 
+DROP TABLE IF EXISTS `alumni`;
 CREATE TABLE `alumni` (
   `alumniID` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alumniAddress1` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '-',
@@ -81,6 +82,7 @@ INSERT INTO `alumni` (`alumniID`, `alumniAddress1`, `alumniAddress2`, `alumniAdd
 -- Table structure for table `charity`
 --
 
+DROP TABLE IF EXISTS `charity`;
 CREATE TABLE `charity` (
   `charityTitle` varchar(100) NOT NULL,
   `charityImage` mediumblob DEFAULT NULL,
@@ -108,6 +110,7 @@ INSERT INTO `charity` (`charityTitle`, `charityImage`, `charityDescription`, `ch
 -- Table structure for table `donor`
 --
 
+DROP TABLE IF EXISTS `donor`;
 CREATE TABLE `donor` (
   `donorName` varchar(100) NOT NULL,
   `donorID` varchar(100) NOT NULL,
@@ -125,6 +128,7 @@ CREATE TABLE `donor` (
 -- Table structure for table `event`
 --
 
+DROP TABLE IF EXISTS `event`;
 CREATE TABLE `event` (
   `eventTitle` varchar(100) NOT NULL,
   `eventID` int(11) NOT NULL,
@@ -139,8 +143,8 @@ CREATE TABLE `event` (
   `eventCapacity` int(11) NOT NULL,
   `eventFee` double DEFAULT NULL,
   `eventSponsor` tinyint(1) NOT NULL,
-  `eventSponsorPackageAmt` double DEFAULT NULL,
-  `eventSponsorGatheredAmt` double DEFAULT NULL
+  `eventSponsorPackageAmt` double DEFAULT 0,
+  `eventSponsorGatheredAmt` double DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -170,6 +174,7 @@ INSERT INTO `event` (`eventTitle`, `eventID`, `eventCategory`, `eventDate`, `eve
 -- Table structure for table `news`
 --
 
+DROP TABLE IF EXISTS `news`;
 CREATE TABLE `news` (
   `newsTitle` varchar(100) NOT NULL,
   `newsID` int(11) NOT NULL,
@@ -192,6 +197,7 @@ INSERT INTO `news` (`newsTitle`, `newsID`, `newsCategory`, `newsArticle`, `newsW
 -- Table structure for table `participant`
 --
 
+DROP TABLE IF EXISTS `participant`;
 CREATE TABLE `participant` (
   `participantName` varchar(100) NOT NULL,
   `participantID` varchar(100) NOT NULL,
@@ -208,6 +214,7 @@ CREATE TABLE `participant` (
 -- Table structure for table `sponsor`
 --
 
+DROP TABLE IF EXISTS `sponsor`;
 CREATE TABLE `sponsor` (
   `sponsorName` varchar(100) NOT NULL,
   `sponsorID` varchar(100) NOT NULL,
@@ -225,6 +232,7 @@ CREATE TABLE `sponsor` (
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` bigint(20) NOT NULL,
   `userID` varchar(100) DEFAULT NULL,

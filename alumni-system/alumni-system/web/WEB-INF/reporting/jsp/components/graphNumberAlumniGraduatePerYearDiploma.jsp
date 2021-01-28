@@ -39,8 +39,8 @@
 
                 var options = {
                     title: "Number of Alumni Graduate with Diploma per year",
-                    width: 600,
-                    height: 400
+                    width: 450,
+                    height: 300
                 };
                 var chart = new google.visualization.ColumnChart(document.getElementById("chart_diploma"));
                 chart.draw(view, options);

@@ -242,7 +242,7 @@ public class ManageCharityControl extends HttpServlet{
         public void compareCharityAction(String charityAction, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
             
-            if(charityAction=="Add")
+            if(charityAction.equals("Add"))
             {   
                 String message = "no";
                 HttpSession session = request.getSession();
@@ -252,7 +252,7 @@ public class ManageCharityControl extends HttpServlet{
                 
             }
             
-            else if(charityAction=="Update")
+            else if(charityAction.equals("Update"))
             {
                 String opt = "Update";
                 HttpSession session = request.getSession();
@@ -263,7 +263,7 @@ public class ManageCharityControl extends HttpServlet{
                 //sendPage(request, response, "/UpdateEventInterface.jsp");    
             }
             
-            else if(charityAction=="Delete")
+            else if(charityAction.equals("Delete"))
             {
            
                 //fetchAllSavedEvent(request, response);

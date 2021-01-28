@@ -19,18 +19,29 @@
         <nav class="w3-sidebar w3-blue w3-bar-block w3-small w3-hide-small w3-center">
             <!-- Avatar image in top left corner -->
             <a href="ManageUserController?option=viewHomepage" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
-                <i class="fa fa-home w3-xxlarge"></i>
+                <i class="fa fa-home w3-xlarge"></i>
                 <p>HOME</p>
             </a>
+            
             <a href="ManageUserController?option=editProfile" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
-                <i class="far fa-edit w3-xxlarge"></i>
+                <i class="far fa-edit w3-xlarge"></i>
                 <p>EDIT PROFILE</p>
             </a>
+            
+            <%    if(user.getRole().equalsIgnoreCase("ALUMNI")) { %>
+            <form action="AlumniController" method="POST" name="alumni-info">
+                <div class="w3-bar-item w3-button w3-padding-large w3-hover-white" onClick="document.forms['alumni-info'].submit();">
+                    <input type="hidden" name="requestType" value="manageAlumnusAlumnaInfo">
+                    <i class="fa fa-user w3-xlarge"></i>
+                    <p>ALUMNI INFO</p>
+                </div>
+            </form>
+            <%    } %>
             
             <form action="AlumniController" method="POST" name="alumni-list">
                 <div class="w3-bar-item w3-button w3-padding-large w3-hover-white" onClick="document.forms['alumni-list'].submit();">
                     <input type="hidden" name="requestType" value="viewAlumniList">
-                    <i class="fas fa-users w3-xxlarge"></i>
+                    <i class="fas fa-users w3-xlarge"></i>
                     <p>ALUMNI LIST</p>
                 </div>
             </form>
@@ -38,41 +49,33 @@
             <form action="ReportingController" method="POST" name="reporting-dashboard">
                 <div class="w3-bar-item w3-button w3-padding-large w3-hover-white" onClick="document.forms['reporting-dashboard'].submit();">
                     <input type="hidden" name="requestType" value="viewDashboard">
-                    <i class="fas fa-chart-line w3-xxlarge"></i>
+                    <i class="fas fa-chart-line w3-xlarge"></i>
                     <p>DASHBOARD</p>
                 </div>
             </form>
             
             <%    if(user.getRole().equalsIgnoreCase("ADMIN")) { %>
             <a id="manage" href="ManageUserController?option=viewManageUserPage" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
-                <i class="fa fa-user w3-xxlarge"></i>
+                <i class="fa fa-user w3-xlarge"></i>
                 <p>MANAGE USER</p>
             </a>
             <%    } %>
             
             <%    if((user.getRole().equalsIgnoreCase("ADMIN"))||(user.getRole().equalsIgnoreCase("STAFF"))) { %>
             <a href="ViewPageControl?option=managePage" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
-                <i class="far fa-edit w3-xxlarge"></i>
+                <i class="fas fa-calendar-week w3-xlarge"></i>
                 <p>MANAGE EVENT</p>
             </a>
             <%    } %>
             
             <a href="ViewPageControl?option=viewPage" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
                 <i class="far fa-calendar-alt w3-xxlarge"></i>
+                <i class="fas fa-clipboard-list w3-xlarge"></i>
                 <p>VIEW EVENT</p>
             </a>
             
-            <%    if(user.getRole().equalsIgnoreCase("ALUMNI")) { %>
-            <form action="AlumniController" method="POST" name="alumni-info">
-                <div class="w3-bar-item w3-button w3-padding-large w3-hover-white" onClick="document.forms['alumni-info'].submit();">
-                    <input type="hidden" name="requestType" value="manageAlumnusAlumnaInfo">
-                    <i class="fa fa-user w3-xxlarge"></i>
-                    <p>ALUMNI INFO</p>
-                </div>
-            </form>
-            <%    } %>
             <a id="manage" href="ManageUserController?option=logout" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
-                <i class="fa fa-key w3-xxlarge"></i>
+                <i class="fa fa-key w3-xlarge"></i>
                 <p>LOGOUT</p>
             </a>
             <input type="text" name="temp" id="temp" value ="<jsp:getProperty name="user" property="role"/>" hidden>

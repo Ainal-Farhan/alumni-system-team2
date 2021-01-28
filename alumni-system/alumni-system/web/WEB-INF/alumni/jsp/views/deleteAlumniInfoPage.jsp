@@ -67,9 +67,13 @@
         <% String currentUserType = ((User)session.getAttribute("user")).getRole(); %>
         
         <div class="container-custom">
-            <div class="jumbotron">
-                <h1 class="display-4">Delete Profile Page</h1>
-                       
+            <nav class="navbar navbar-dark bg-dark">
+                <div style="height:36px">
+                    <p class="navbar-brand"><i class="fas fa-user-minus"></i> DELETE ALUMNI ACCOUNT</p>
+                </div>
+            </nav>
+            
+            <div class="jumbotron" style="padding: 5px 5px 5px 5px;">                       
                 <div class="form-group row">
                     <div class="col center">
                         <img src="AlumniController?requestType=requestImage" alt="profile picture" class="mx-auto d-block" width="200" height="200" style="margin-top:10px;margin-bottom:10px;border-radius: 50%;">
