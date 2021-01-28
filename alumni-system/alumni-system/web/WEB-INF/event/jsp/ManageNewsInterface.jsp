@@ -23,26 +23,54 @@
         <title>Manage News</title>
         <link rel='stylesheet' href='style.css'/>
         
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="assets/css/main.css">
-        <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <jsp:include page="../../allModules/bootstrap4.jsp" />
+        
+        <style>
+            .custom-shadow {
+                box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            }
+            .center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .container-custom {
+                display: block;
+                margin-right: auto;
+                margin-left: auto;
+                width: 80%;
+                padding: 10px 0 10px 150px;
+            }
+            .header-home {
+                text-align: center;
+            }
+            @media only screen and (max-width: 600px) {.container-custom {padding-left: 10px; padding-top: 110px;}}
+        </style>
     </head>
     <body>
-        <nav class="navbar sticky-top navbar-dark bg-primary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Staff Management</a>
-            </div>
-        </nav>
-        <div class="menu-container">
-            <img class="menu-container-pic" src="assets/images\UTMFabu.png">
-        </div>
+        <%  if(session.getAttribute("user") != null) { %>
+
+        <jsp:include page="../../allModules/sideNavigationBar.jsp" />
+        
+        <div class="container-custom">
+            
+            <nav class="navbar navbar-dark bg-dark">
+                <div style="height:36px">
+                    <p class="navbar-brand">MANAGE CHARITY</p>
+                </div>
+            </nav>
+            
+            <div class="jumbotron" style="padding-top:25px;padding-bottom: 10px;">
+                <!-- Header/Home -->
+                <header class="header-home">
+                    <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
+                    <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p>
+                </header>
         
         
         <%--<form action="\ManageNewsControl" method="post">--%>
             
             <div class="container pb-5">
-            <div class="row align-items-start justify-content-center"><h1>Manage News</h1></div>
             <div class="row align-items-center pt-4">
                 <div class="col">
                     <div class="card p-3 mb-2 bg-light text-dark" style="width: 18rem;">
@@ -74,7 +102,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Updating News</h5>
                             <p class="card-text">Update or modify any latest news.</p>
-                            <a href="ManageNewsControl?option=UpdateNews" class="btn btn-outline-success">                           
+                            <a href="ManageNewsControl?option=UpdateNews" class="btn btn-outline-warning">                           
                                 Update News
                             </a>
                          </div>
@@ -87,31 +115,11 @@
                 </div>
             </div>
             </div>
+        </div>
+</div>   
         <%--</form>--%>
         
-        <div class="p-3 mb-2 bg-primary text-dark">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-9">
-                            <p><b>Faculty of Built Environment and Surveying,
-                            <br>Universiti Teknologi Malaysia,
-                            <br>UTM Skudai, 81310 Johor,
-                            <br>Malaysia.</b></p>
-                        </div>
-                        <div class="col-sm-2">
-                            <p><b>Tel: +6075557351
-                            <br>Fax: +6075566155
-                            <br>Email: fabu@utm.my</b></p>                                             
-                        <div class="logo">
-                            <a href="https://www.facebook.com/built.surveyUTM/"><img class="sizelogo" src="assets/images\facebook.png" width="35px" height="35px"></a>
-                            <a href="https://www.flickr.com/photos/126408255@N08/"><img class="sizelogo" src="assets/images\flickr.png" width="35px" height="35px"></a>
-                            <a href="https://www.pinterest.com/fabutm/"><img class="sizelogo" src="assets/images\Pinterest.png" width="35px" height="35px"></a>
-                            <a href="http://www.youtube.com/user/fabutmskudai"><img class="sizelogo" src="assets/images\Youtube.png" width="35px" height="35px"></a>
-                        </div>
-                        </div>
-                    </div>
-                </div>              
-        </div>
-        
+        <jsp:include page="../../allModules/footer.jsp" />
+<%  } %>        
     </body>
 </html>

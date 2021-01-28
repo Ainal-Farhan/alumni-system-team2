@@ -7,8 +7,8 @@
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Base64"%>
-<%@page import="Model.*"%>
-<%@page import="Control.*"%>
+<%@page import="com.models.event.*"%>
+<%@page import="com.controllers.event.*"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page language="java" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,9 +31,52 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel='stylesheet' href='style.css'/>
         <title>View Charity</title>
+        <link rel='stylesheet' href='style.css'/>
+        
+        <jsp:include page="../../allModules/bootstrap4.jsp" />
+        
+        <style>
+            .custom-shadow {
+                box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            }
+            .center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .container-custom {
+                display: block;
+                margin-right: auto;
+                margin-left: auto;
+                width: 80%;
+                padding: 10px 0 10px 150px;
+            }
+            .header-home {
+                text-align: center;
+            }
+            @media only screen and (max-width: 600px) {.container-custom {padding-left: 10px; padding-top: 110px;}}
+        </style>
     </head>
     <body>
-        <h2 align="center"><font><strong>View Charity</strong></font></h2>
+        <%  if(session.getAttribute("user") != null) { %>
+
+        <jsp:include page="../../allModules/sideNavigationBar.jsp" />
+        
+        <div class="container-custom">
+            
+            <nav class="navbar navbar-dark bg-dark">
+                <div style="height:36px">
+                    <p class="navbar-brand">CHARITY DETAILS</p>
+                </div>
+            </nav>
+            
+            <div class="jumbotron" style="padding-top:25px;padding-bottom: 10px;">
+                <!-- Header/Home -->
+                <header class="header-home">
+                    <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
+                    <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p>
+                </header>
+        
         <% 
         String message = (String)session.getAttribute("alertMsg");
         %>
@@ -46,8 +89,60 @@
         <%}%>
             <%ArrayList<Charity> charitylist = (ArrayList<Charity>)session.getAttribute("charitylistupdate");%>
 
-          
-            <div class="viewEvent3">
+            <%
+                int i=0;
+            %>
+            
+        <form  name="ViewCharityInterface" action="${pageContext.request.contextPath}/ViewPageControl" method="post">
+        <div class="container pb-5">
+            <div class="row align-items-center pt-4">
+                <div class="col">
+                    <div class="card p-3 mb-2 bg-light text-dark" style="width: 25rem;">
+                        <%
+                            byte charityImage2[] =((Charity)charitylist.get(i)).getCharityImage2();
+                            String imgDataBase64=new String(Base64.getEncoder().encode(charityImage2));
+                            if(imgDataBase64!=null)
+                            {
+                        %>
+                                <img src="data:image/gif;base64,<%= imgDataBase64 %>" alt="No images" class="card-img-top"/><br>
+                        <%
+                            }
+                            else
+                            {   
+                        %>
+                                 <img src="assets/images\No_Image_Available.jpg" alt="No images2" class="card-img-top"/><br>
+                        <%}%>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-3 mb-2 bg-light text-dark" style="width: 40rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: blue"><b><%=((Charity)charitylist.get(i)).getCharityTitle()%></b></h5>
+                            <p class="card-text"><b>Dateline:</b> <%=((Charity)charitylist.get(i)).getCharityDateline()%></p>
+                            <p class="card-text"><b>Account Bank:</b> <%=((Charity)charitylist.get(i)).getCharityAccBank()%></p>
+                            <p class="card-text"><b>Account Number:</b> <%=((Charity)charitylist.get(i)).getCharityAccNumber()%></p>
+                            <p class="card-text"><b>Account Name:</b> <%=((Charity)charitylist.get(i)).getCharityAccName()%></p>
+                            <p class="card-text"><b>Total Gathered Amount:</b> RM<%=((Charity)charitylist.get(i)).getCharityGatheredAmt()%> out of RM<%=((Charity)charitylist.get(i)).getCharityTargetAmt()%></p>
+                            <p class="card-text"><b>Description:</b> <%=((Charity)charitylist.get(i)).getCharityDescription()%></p>
+                            <% int charityID =((Charity)charitylist.get(i)).getCharityID(); %>
+                            <input type="hidden" name="charityID" value=<%=charityID %> >
+                            <input type="submit" class="btn btn-outline-primary" name="buttonCharity" id="Donate" value="Make Charity">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="d-grid gap-2 col-2 mx-auto pt-2">
+                    <form action="${pageContext.request.contextPath}/ViewPageControl" method="post">
+                        <input type="submit" class="btn btn-success btn-lg" name="button" value="Main Menu" />
+                    </form>                                         
+                </div>
+            </div>
+        </div>
+        </form>
+     </div>
+        </div>        
+<%--            <div class="viewEvent3">
             <%
                 int i=0;
             %>
@@ -109,8 +204,9 @@
                     </div>
         </form>
             
-            </div>
-            <div>
+            </div>--%>
+            
+<%--            <div>
                 <form action="${pageContext.request.contextPath}/ViewPageControl" method="post">
                 <table border="0" align="center">
                   <tr>
@@ -118,6 +214,9 @@
                   </tr>
                 </table>
                 </form>
-            </div>
+            </div>--%>
+            
+            <jsp:include page="../../allModules/footer.jsp" />
+<%  } %>
     </body>
 </html>

@@ -17,15 +17,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import jdbc.JDBCUtility;
+import com.jdbc.utility.JDBCUtility;
 /**
  *
  * @author Amir Syafiq
  */
 @WebServlet(name = "Donor", urlPatterns = {"/Donor"})
 public class Donor extends HttpServlet{
-    
-        private JDBCUtility jdbcUtility;
         private Connection con;
         private String sqlStatement;
         PreparedStatement preparedStatementInsert = null;
@@ -115,26 +113,7 @@ public class Donor extends HttpServlet{
 	public void addDonor(String userName1, String userID, String userEmail, String userPhoneNum, double charityAmt, int charityID, InputStream charityImgProof, HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException{
 
-             String driver = "com.mysql.jdbc.Driver";
-
-            String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";
-            
-            /*String dbName = "eventmoduledb";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";*/
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
+            con = JDBCUtility.getCon();
             
             sqlStatement ="INSERT into donor(donorName, donorID, donorEmail, donorPhoneNum, charityAmt, charityID, charityImgProof) VALUES(?, ?, ?, ?, ?, ?, ?)";
           

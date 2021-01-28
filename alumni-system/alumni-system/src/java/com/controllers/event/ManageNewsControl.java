@@ -18,7 +18,6 @@ import java.sql.Connection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
-import jdbc.JDBCUtility;
 
 /**
  *
@@ -29,8 +28,6 @@ import jdbc.JDBCUtility;
 public class ManageNewsControl extends HttpServlet{
     
         News news = new News();
-
-        private JDBCUtility jdbcUtility;
         private Connection con;
         
         protected void processRequest(HttpServletRequest request, HttpServletResponse response)

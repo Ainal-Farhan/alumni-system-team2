@@ -60,10 +60,13 @@
                 <p>MANAGE USER</p>
             </a>
             <%    } %>
+            
+            <%    if((user.getRole().equalsIgnoreCase("ADMIN"))||(user.getRole().equalsIgnoreCase("STAFF"))) { %>
             <a href="ViewPageControl?option=managePage" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
                 <i class="fas fa-calendar-week w3-xlarge"></i>
-                <p>MANAGE EVENT</p>
+                <p>MANAGE EVENTS</p>
             </a>
+            <%    } %>
             
             <a href="ViewPageControl?option=viewPage" class="w3-bar-item w3-button w3-padding-large w3-hover-white">
                 <i class="fas fa-clipboard-list w3-xlarge"></i>

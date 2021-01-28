@@ -19,10 +19,8 @@
         <title>Main User Interface</title>
         <link rel='stylesheet' href='style.css'/>
         
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <jsp:include page="../../allModules/bootstrap4.jsp" />
+        
     </head>
     <body>
         <nav class="navbar sticky-top navbar-dark bg-primary">
