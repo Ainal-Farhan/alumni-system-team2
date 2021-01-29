@@ -36,29 +36,30 @@
         <servlet-name>ManageUserController</servlet-name>
         <url-pattern>/ManageUserController</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <servlet-name>Event</servlet-name>
-        <servlet-class>Model.Event</servlet-class>
+        <servlet-class>com.models.event.Event</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>News</servlet-name>
-        <servlet-class>Model.News</servlet-class>
+        <servlet-class>com.models.event.News</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Charity</servlet-name>
-        <servlet-class>Model.Charity</servlet-class>
+        <servlet-class>com.models.event.Charity</servlet-class>
     </servlet>
      <servlet>
         <servlet-name>Donor</servlet-name>
-        <servlet-class>Model.Donor</servlet-class>
+        <servlet-class>com.models.event.Donor</servlet-class>
     </servlet>
      <servlet>
         <servlet-name>Participant</servlet-name>
-        <servlet-class>Model.Participant</servlet-class>
+        <servlet-class>com.models.event.Participant</servlet-class>
     </servlet>
      <servlet>
         <servlet-name>Sponsor</servlet-name>
-        <servlet-class>Model.Sponsor</servlet-class>
+        <servlet-class>com.models.event.Sponsor</servlet-class>
     </servlet>
     
     <servlet-mapping>
