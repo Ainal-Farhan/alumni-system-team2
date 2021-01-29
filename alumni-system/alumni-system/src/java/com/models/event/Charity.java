@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package com.models.event;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Connection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,15 +18,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 import com.google.gson.Gson;
 
+import com.controllers.event.*;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
-import com.jdbc.utility.JDBCUtility;
+import javax.swing.ImageIcon;
+import jdbc.JDBCUtility;
 
 /**
  *
@@ -228,7 +236,6 @@ public class Charity extends HttpServlet{
             throws ServletException, IOException{
 
             con = JDBCUtility.getCon();
-            
         
             sqlStatement = "DELETE FROM charity WHERE (charityID = ?)";
             
@@ -273,7 +280,7 @@ public class Charity extends HttpServlet{
             throws ServletException, IOException{
 
             con = JDBCUtility.getCon();
-            
+        
             sqlStatement ="SELECT * FROM charity WHERE (charityID = ?)";
             HttpSession session = request.getSession();
             
@@ -330,7 +337,6 @@ public class Charity extends HttpServlet{
 		
                     event = events.get(counter);
                     session.setAttribute("event", event);
-
                     response.sendRedirect(request.getContextPath() + "/DeleteEventInterface.jsp");
                 }*/
                 
@@ -411,11 +417,7 @@ public class Charity extends HttpServlet{
 	public void searchAllSavedCharity(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
-            con = com.jdbc.utility.JDBCUtility.getCon();
-            
-            sqlStatement ="SELECT * FROM charity";
-            HttpSession session = request.getSession();
-            
+            con = JDBCUtility.getCon();
         
             ArrayList<Charity> charitylist = new ArrayList<Charity>();
             Charity charity = new Charity(); 
@@ -467,7 +469,6 @@ public class Charity extends HttpServlet{
 		
                     event = events.get(counter);
                     session.setAttribute("event", event);
-
                     response.sendRedirect(request.getContextPath() + "/DeleteEventInterface.jsp");
                 }*/
             }
@@ -483,9 +484,8 @@ public class Charity extends HttpServlet{
 
         public ArrayList<Charity> getAllSavedCharity(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
             con = JDBCUtility.getCon();
-            
+        
             sqlStatement ="SELECT * FROM charity";
             HttpSession session = request.getSession();
             
@@ -542,8 +542,8 @@ public class Charity extends HttpServlet{
             throws ServletException, IOException{
             
             con = JDBCUtility.getCon();
-            
-            sqlStatement ="SELECT * FROM charity WHERE (chartyID = ?)";
+        
+            sqlStatement ="SELECT * FROM charity WHERE (charityID = ?)";
             /*try (PrintWriter out = response.getWriter()) {
                         out.println(eventCategory);
                     }*/
