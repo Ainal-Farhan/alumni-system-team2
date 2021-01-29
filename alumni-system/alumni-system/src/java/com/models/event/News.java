@@ -332,7 +332,7 @@ public class News extends HttpServlet{
             sqlStatement ="SELECT * FROM news";
             HttpSession session = request.getSession();           
         
-            ArrayList<News> newslist = new ArrayList<News>();
+            ArrayList<News> newslist = new ArrayList<>();
             News news = new News(); 
 
             try {

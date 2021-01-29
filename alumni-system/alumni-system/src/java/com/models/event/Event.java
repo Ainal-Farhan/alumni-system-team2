@@ -31,7 +31,7 @@ import com.jdbc.utility.JDBCUtility;
 @WebServlet(name = "Event", urlPatterns = {"/Event"})
 public class Event extends HttpServlet{
         private Connection con;
-        private String sqlStatement;
+        private String sqlStatement = "";
         PreparedStatement preparedStatementInsert = null;
 
         private String eventTitle;  // = "Hello";
@@ -667,7 +667,7 @@ public class Event extends HttpServlet{
             
             con = JDBCUtility.getCon();
             
-            sqlStatement ="SELECT * FROM event";
+            sqlStatement ="SELECT * FROM event;";
             HttpSession session = request.getSession();
             
         
@@ -705,7 +705,7 @@ public class Event extends HttpServlet{
                         eventSponsorGatheredAmt = rs.getDouble("eventSponsorGatheredAmt");
    
                         eventlist.add(new Event(eventID,eventTitle,eventDescription,eventCategory,eventDate,eventTime,eventVenue,eventCapacity,eventFee,eventOrganizer,eventImage2,eventWebsite,eventSponsor,eventSponsorPackageAmt,eventSponsorGatheredAmt));
-                }
+                }   
                         session.setAttribute("eventlist", eventlist);
                         preparedStatementInsert.close();
                         String opt=(String)session.getAttribute("opt");
@@ -750,7 +750,7 @@ public class Event extends HttpServlet{
             sqlStatement ="SELECT * FROM event";
             HttpSession session = request.getSession();           
         
-            ArrayList<Event> eventlist = new ArrayList<Event>();
+            ArrayList<Event> eventlist = new ArrayList<>();
             Event event = new Event(); 
 
             try {

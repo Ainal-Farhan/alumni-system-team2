@@ -62,7 +62,7 @@ public class JDBCUtility {
                 System.out.println("\nConnected to " + dma.getURL());
                 System.out.println("Driver       " + dma.getDriverName());
                 System.out.println("Version      " + dma.getDriverVersion());
-                System.out.println("");
+                System.out.println("Username     " + USERNAMES[i]);
                 
                 break;
             }

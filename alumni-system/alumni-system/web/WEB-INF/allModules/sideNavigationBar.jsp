@@ -127,6 +127,22 @@
                 </div>
             </form>
             
+            <%    if((user.getRole().equalsIgnoreCase("ADMIN"))||(user.getRole().equalsIgnoreCase("STAFF"))) { %>
+            <form action="ViewPageControl" method="GET" name="view-events">
+                <div class="w3-bar-item w3-button" style="width:25% !important" onClick="document.forms['view-events'].submit();">
+                    <input type="hidden" name="option" value="managePage">
+                    <p>MANAGE EVENTS</p>
+                </div>
+            </form>
+            <%    } %>
+            
+            <form action="ViewPageControl" method="GET" name="view-event">
+                <div class="w3-bar-item w3-button" style="width:25% !important" onClick="document.forms['view-event'].submit();">
+                    <input type="hidden" name="option" value="viewPage">
+                    <p>VIEW EVENTS</p>
+                </div>
+            </form>
+            
             <form action="ManageUserController" method="POST" name="logout-user">
                 <div class="w3-bar-item w3-button" style="width:25% !important" onClick="document.forms['logout-user'].submit();">
                     <input type="hidden" name="option" value="logout">
