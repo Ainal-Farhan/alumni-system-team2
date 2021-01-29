@@ -43,7 +43,7 @@ public class ReportingController extends HttpServlet {
                 while(rs5.next()){
                     AlumniReport alumni2 = new AlumniReport();
                     alumni2.setAlumniGraduateYearDiploma(String.valueOf(rs5.getInt("alumniGraduateYearDiploma")));
-                    alumni2.setTotalAlumniGraduateYearBachelor(rs5.getInt("COUNT(alumniGraduateYearDiploma)"));
+                    alumni2.setTotalAlumniGraduateYearDiploma(rs5.getInt("COUNT(alumniGraduateYearDiploma)"));
 
                     alumni.add(alumni2);
                 }
@@ -278,6 +278,9 @@ public class ReportingController extends HttpServlet {
             }
         }
         
+        
+        
+        
         protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -316,13 +319,37 @@ public class ReportingController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         try (PrintWriter out = response.getWriter()){
-            ArrayList<AlumniReport> alumnis = getInfoFromDatabase();
-            Gson gson = new Gson();
-            String jsonString = gson.toJson(alumnis);
+            String option = request.getParameter("option");
             
-            out.println(jsonString);
+            if(option.equals("reporting-event")){
+                getJSONLinkForReportingEvent(response);
+            }else if(option.equals("reporting-alumni")){
+                getJSONLinkForReportingAlumni(response);
+            }
+        }
+    }
+    
+    private void getJSONLinkForReportingEvent(HttpServletResponse response) throws IOException, ServletException {
+        try (PrintWriter out = response.getWriter()){
+        ArrayList<EventReport> events = getEventReportsFromDatabase();
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(events);
             
-            out.close();
+        out.println(jsonString);
+            
+        out.close();
+        }
+    }
+    
+    private void getJSONLinkForReportingAlumni(HttpServletResponse response) throws IOException, ServletException {
+        try (PrintWriter out = response.getWriter()){
+        ArrayList<AlumniReport> alumnis = getAlumniGraduateYearFromDatabase();
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(alumnis);
+            
+        out.println(jsonString);
+            
+        out.close();
         }
     }
     
