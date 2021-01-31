@@ -110,7 +110,7 @@ public class ManageCharityControl extends HttpServlet{
 	 * @param charityAccNumber
 	 * @param charityAccName
 	 */
-	public void verifyCharityData(String option, String charityTitle, String charityDescription, String charityDateline, double charityTargetAmt, InputStream charityImage, String charityAccBank, String charityAccNumber, String charityAccName, HttpServletRequest request, HttpServletResponse response)
+	public void verifyCharityData(String option, int charityID, String charityTitle, String charityDescription, String charityDateline, double charityTargetAmt, InputStream charityImage, String charityAccBank, String charityAccNumber, String charityAccName, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
             
              if(option.equals("Add"))
@@ -120,7 +120,7 @@ public class ManageCharityControl extends HttpServlet{
             }
             else if(option.equals("Update"))
             {
-                charity.updateSavedCharity(charityTitle, charityDescription, charityDateline, charityTargetAmt, charityImage, charityAccBank, charityAccNumber, charityAccName, request, response);
+                charity.updateSavedCharity(charityID, charityTitle, charityDescription, charityDateline, charityTargetAmt, charityImage, charityAccBank, charityAccNumber, charityAccName, request, response);
                 charity.searchAllSavedCharity(request, response);
                 //response.sendRedirect(request.getContextPath() + "/DeleteEventInterface.jsp");
             }
@@ -200,7 +200,7 @@ public class ManageCharityControl extends HttpServlet{
                 InputStream charityImage = part.getInputStream();
                 double charityTargetAmt = Double.parseDouble(request.getParameter("charityTargetAmt"));
                
-                verifyCharityData("Add", charityTitle,  charityDescription,  charityDateline,  charityTargetAmt,  charityImage,  charityAccBank,  charityAccNumber,  charityAccName, request, response);
+                verifyCharityData("Add", 0, charityTitle,  charityDescription,  charityDateline,  charityTargetAmt,  charityImage,  charityAccBank,  charityAccNumber,  charityAccName, request, response);
 
             } 
             
@@ -220,6 +220,7 @@ public class ManageCharityControl extends HttpServlet{
             
             else if (request.getParameter("button7") != null) 
             {
+                int charityID = Integer.parseInt(request.getParameter("charityID"));
                 String charityTitle = request.getParameter("charityTitle");
                 String charityDescription = request.getParameter("charityDescription");
                 String charityDateline = request.getParameter("charityDateline");
@@ -230,7 +231,7 @@ public class ManageCharityControl extends HttpServlet{
                 InputStream charityImage = part.getInputStream();
                 double charityTargetAmt = Double.parseDouble(request.getParameter("charityTargetAmt"));
                
-                verifyCharityData("Update", charityTitle,  charityDescription,  charityDateline,  charityTargetAmt,  charityImage,  charityAccBank,  charityAccNumber,  charityAccName, request, response);
+                verifyCharityData("Update", charityID, charityTitle,  charityDescription,  charityDateline,  charityTargetAmt,  charityImage,  charityAccBank,  charityAccNumber,  charityAccName, request, response);
             }
             else 
             {

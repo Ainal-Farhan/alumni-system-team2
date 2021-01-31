@@ -97,7 +97,7 @@ public class ManageNewsControl extends HttpServlet{
          * @throws javax.servlet.ServletException
          * @throws java.io.IOException
 	 */
-	public void verifyNewsData(String option, String newsTitle, String newsCategory, String newsArticle, String newsWebsite, HttpServletRequest request, HttpServletResponse response)
+	public void verifyNewsData(String option, int newsID, String newsTitle, String newsCategory, String newsArticle, String newsWebsite, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
             if(option.equals("Add"))
@@ -107,7 +107,7 @@ public class ManageNewsControl extends HttpServlet{
             }
             else if(option.equals("Update"))
             {
-                news.updateSavedNews(newsTitle,  newsCategory,  newsArticle,  newsWebsite, request, response);
+                news.updateSavedNews(newsID, newsTitle,  newsCategory,  newsArticle,  newsWebsite, request, response);
                 news.searchAllSavedNews(request, response);
                 //response.sendRedirect(request.getContextPath() + "/DeleteEventInterface.jsp");
             }
@@ -186,7 +186,7 @@ public class ManageNewsControl extends HttpServlet{
                 String newsArticle = request.getParameter("newsArticle");
                 String newsWebsite = request.getParameter("newsWebsite");
                
-                verifyNewsData("Add", newsTitle,  newsCategory,  newsArticle,  newsWebsite, request, response);
+                verifyNewsData("Add", 0, newsTitle,  newsCategory,  newsArticle,  newsWebsite, request, response);
 
             } 
             
@@ -204,11 +204,12 @@ public class ManageNewsControl extends HttpServlet{
             
             else if (request.getParameter("button7") != null) 
             {
+                int newsID = Integer.parseInt(request.getParameter("newsID"));
                 String newsTitle = request.getParameter("newsTitle");
                 String newsCategory = request.getParameter("newsCategory");
                 String newsArticle = request.getParameter("newsArticle");
                 String newsWebsite = request.getParameter("newsWebsite");
-                verifyNewsData("Update", newsTitle,  newsCategory,  newsArticle,  newsWebsite, request, response);
+                verifyNewsData("Update",newsID, newsTitle,  newsCategory,  newsArticle,  newsWebsite, request, response);
             }
             else 
             {

@@ -106,7 +106,7 @@ public class ManageEventControl extends HttpServlet{
 	 * @param eventSponsorPackageAmt
 	 * @param eventSponsorGatheredAmt
 	 */
-	public void verifyEventData(String option, int eventCapacity, String eventCategory, String eventDate, String eventDescription, double eventFee, InputStream eventImage, String eventOrganizer, String eventTime, String eventTitle, String eventVenue, boolean eventSponsor, String eventWebsite, double eventSponsorPackageAmt, HttpServletRequest request, HttpServletResponse response)
+	public void verifyEventData(String option, int eventID, int eventCapacity, String eventCategory, String eventDate, String eventDescription, double eventFee, InputStream eventImage, String eventOrganizer, String eventTime, String eventTitle, String eventVenue, boolean eventSponsor, String eventWebsite, double eventSponsorPackageAmt, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
             
            
@@ -121,7 +121,8 @@ public class ManageEventControl extends HttpServlet{
             }
             else if(option.equals("Update"))
             {
-                event.updateSavedEvent(eventCapacity,  eventCategory,  eventDate,  eventDescription,  eventFee,  eventImage,  eventOrganizer,  eventTime,  eventTitle,  eventVenue,  eventSponsor,  eventWebsite,  eventSponsorPackageAmt, request, response);
+                
+                event.updateSavedEvent(eventID, eventCapacity,  eventCategory,  eventDate,  eventDescription,  eventFee,  eventImage,  eventOrganizer,  eventTime,  eventTitle,  eventVenue,  eventSponsor,  eventWebsite,  eventSponsorPackageAmt, request, response);
                 event.searchAllSavedEvent(request, response);
                 //response.sendRedirect(request.getContextPath() + "/DeleteEventInterface.jsp");
             }
@@ -147,6 +148,7 @@ public class ManageEventControl extends HttpServlet{
                 }
                 else if(option.equals("Delete"))
                 {
+                    
                     event.deleteEvent(eventID, request, response);
                     event.searchAllSavedEvent(request, response);
                     //response.sendRedirect(request.getContextPath() + "/DeleteEventInterface.jsp");
@@ -298,7 +300,7 @@ public class ManageEventControl extends HttpServlet{
                     eventSponsor = false;
                 }
                 double eventSponsorPackageAmt = Double.parseDouble(request.getParameter("eventSponsorPackageAmt"));
-                verifyEventData("Add", eventCapacity,  eventCategory,  eventDate,  eventDescription,  eventFee,  eventImage,  eventOrganizer,  eventTime,  eventTitle,  eventVenue,  eventSponsor,  eventWebsite,  eventSponsorPackageAmt, request, response);
+                verifyEventData("Add",0, eventCapacity,  eventCategory,  eventDate,  eventDescription,  eventFee,  eventImage,  eventOrganizer,  eventTime,  eventTitle,  eventVenue,  eventSponsor,  eventWebsite,  eventSponsorPackageAmt, request, response);
 
             }
             
@@ -318,6 +320,7 @@ public class ManageEventControl extends HttpServlet{
             
             else if (request.getParameter("button7") != null) 
             {
+                int eventID = Integer.parseInt(request.getParameter("eventID"));
                 String eventTitle = request.getParameter("eventTitle");
                 String eventDescription = request.getParameter("eventDescription");
                 String eventCategory = request.getParameter("eventCategory");
@@ -342,7 +345,7 @@ public class ManageEventControl extends HttpServlet{
                     eventSponsor = false;
                 }
                 double eventSponsorPackageAmt = Double.parseDouble(request.getParameter("eventSponsorPackageAmt"));
-                verifyEventData("Update", eventCapacity,  eventCategory,  eventDate,  eventDescription,  eventFee,  eventImage,  eventOrganizer,  eventTime,  eventTitle,  eventVenue,  eventSponsor,  eventWebsite,  eventSponsorPackageAmt, request, response); 
+                verifyEventData("Update", eventID, eventCapacity,  eventCategory,  eventDate,  eventDescription,  eventFee,  eventImage,  eventOrganizer,  eventTime,  eventTitle,  eventVenue,  eventSponsor,  eventWebsite,  eventSponsorPackageAmt, request, response); 
             }
             else 
             {

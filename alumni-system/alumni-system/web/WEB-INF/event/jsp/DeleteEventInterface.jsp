@@ -147,7 +147,7 @@
                     <input class="btn btn-primary btn-sm" type="submit" name="button5" id="update" value="Update">
                 </label></td>    
                 <td> <label>
-                    
+                    <input type="hidden" name="eventID" value=<%=eventID %> >
                     <input class="btn btn-danger btn-sm" type="submit" name="button6" id="delete" value="Delete">
                 </label></td></tr>
         </form>

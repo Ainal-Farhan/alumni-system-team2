@@ -222,9 +222,11 @@
                             </div>
                         </div>
                     </div>
+                    <% int eventID =((Event)eventlist.get(i)).getEventID(); %>
                     <div class="d-grid gap-2 col-3 mx-auto pt-1">
+                        <input type="hidden" name="eventID" value=<%=eventID %> >
                         <input class="btn btn-warning" type="reset" id="buttonreset" name="buttonreset" value="Reset Form">
-                        <input class=" btn btn-primary" type="submit" id="button1" name="button7" value="Update Event">                                            
+                        <input class=" btn btn-primary" type="submit" id="button7" name="button7" value="Update Event">                                            
                     </div>
                     <div class="d-grid gap-2 col-2 mx-auto pt-2">
                         <a href="ManageEventControl?option=Event Menu" class="btn btn-success">Event Menu</a>       

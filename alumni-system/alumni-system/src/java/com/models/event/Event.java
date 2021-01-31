@@ -325,7 +325,7 @@ public class Event extends HttpServlet{
 	 * @param eventSponsorPackageAmt
 	 * @param eventSponsorGatheredAmt
 	 */
-	public void updateSavedEvent(int eventCapacity, String eventCategory, String eventDate, String eventDescription, double eventFee, InputStream eventImage, String eventOrganizer, String eventTime, String eventTitle, String eventVenue, boolean eventSponsor, String eventWebsite, double eventSponsorPackageAmt, HttpServletRequest request, HttpServletResponse response)
+	public void updateSavedEvent(int eventID, int eventCapacity, String eventCategory, String eventDate, String eventDescription, double eventFee, InputStream eventImage, String eventOrganizer, String eventTime, String eventTitle, String eventVenue, boolean eventSponsor, String eventWebsite, double eventSponsorPackageAmt, HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
             
             String driver = "com.mysql.jdbc.Driver";

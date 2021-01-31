@@ -277,7 +277,7 @@ public class News extends HttpServlet{
 	 * @param newsArticle
 	 * @param newsWebsite
 	 */
-	public void updateSavedNews(String newsTitle, String newsCategory, String newsArticle, String newsWebsite, HttpServletRequest request, HttpServletResponse response)
+	public void updateSavedNews(int newsID, String newsTitle, String newsCategory, String newsArticle, String newsWebsite, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
             String driver = "com.mysql.jdbc.Driver";
