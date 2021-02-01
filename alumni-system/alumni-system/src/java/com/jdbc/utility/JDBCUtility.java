@@ -53,11 +53,13 @@ public class JDBCUtility {
         
         while(true) {
             try {
-                String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME + "?useTimeZone=true&serverTimezone=UTC&autoReconnect=true&useSSL=false";
+                 String url = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME + "?useTimeZone=true&serverTimezone=UTC&autoReconnect=true&useSSL=false";
+//                String url = "jdbc:mysql://localhost:3307/alumni_module-db?useTimeZone=true&serverTimezone=UTC&autoReconnect=true&useSSL=false";
                 String driver = "com.mysql.jdbc.Driver";
 
                 Class.forName (driver);
                 con = DriverManager.getConnection(url, USERNAMES[i], PASSWORDS[i]);
+//                con = DriverManager.getConnection(url, "root", "");
                 DatabaseMetaData dma = con.getMetaData ();
                 System.out.println("\nConnected to " + dma.getURL());
                 System.out.println("Driver       " + dma.getDriverName());

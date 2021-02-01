@@ -32,13 +32,13 @@ import java.util.Base64;
 import java.util.Comparator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 /**
  *
@@ -546,7 +546,7 @@ public class AlumniController extends HttpServlet {
             throws ServletException, IOException {
         
         setContentForAlumniList(request);
-
+        
         new Route().forwardPage(request, response, AlumniPageList.VIEW_ALUMNI_LIST_INFO_PAGE);
     }
 
@@ -569,12 +569,14 @@ public class AlumniController extends HttpServlet {
         boolean status = false;
         try {
             Connection con = JDBCUtility.getCon();
-
+            
+            // get alumni info from table alumni
             String statementQuery1 = AlumniSQLStatementList.SQL_STATEMENT_RETRIEVE_ALL_FROM_TABLE_ALUMNI;
-
+            
             Statement statement1 = con.createStatement();
             ResultSet result1 = statement1.executeQuery(statementQuery1);
 
+            // get info from table user where role is alumni
             String statementQuery2 = AlumniSQLStatementList.SQL_STATEMENT_RETRIEVE_ALL_FROM_TABLE_USER_WHERE_ROLE_IS_ALUMNI;
 
             Statement statement2 = con.createStatement();
@@ -627,12 +629,13 @@ public class AlumniController extends HttpServlet {
                 alumni.setEmployerAddress(result1.getString("employerAddress1"), result1.getString("employerAddress2"),
                         result1.getString("employerAddressCity"), result1.getString("employerAddressPostCode"),
                         result1.getString("employerAddressState"), result1.getString("employerAddressCountry"));
-
+                
                 alumniList.add(alumni);
                 status = true;
             }
 
             totalAlumni = alumniList.size();
+            
             totalPages = totalAlumni / TOTAL_ALUMNI_PER_PAGE;
 
             int remain = totalAlumni % TOTAL_ALUMNI_PER_PAGE;

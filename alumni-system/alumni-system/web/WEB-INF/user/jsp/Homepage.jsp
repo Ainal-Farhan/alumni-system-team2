@@ -53,6 +53,15 @@
                 margin-right:auto;
                 margin-left:auto;
             }
+            .container-custom {
+                display: block;
+                margin-right: auto;
+                margin-left: auto;
+                width: 80%;
+                padding: 10px 0 10px 150px;
+            }
+            @media only screen and (max-width: 600px) {.container-custom {padding-left: 10px; padding-top: 110px;}}
+            
         </style>
     </head>
     
@@ -64,7 +73,7 @@
             </div>
             <div class="col">
                 <!-- Page Content -->
-                <div class="center-container">
+                <div class="container-custom">
                     <nav class="navbar navbar-dark bg-dark">
                         <div style="height:36px">
                             <p class="navbar-brand"><i class="fa fa-home"></i> HOME</p>
