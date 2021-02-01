@@ -363,7 +363,7 @@ public class Charity extends HttpServlet{
 	 * @param charityAccNumber
 	 * @param charityAccName
 	 */
-	public void updateSavedCharity(String charityTitle, String charityDescription, String charityDateline, double charityTargetAmt, InputStream charityImage, String charityAccBank, String charityAccNumber, String charityAccName, HttpServletRequest request, HttpServletResponse response)
+	public void updateSavedCharity(int charityID, String charityTitle, String charityDescription, String charityDateline, double charityTargetAmt, InputStream charityImage, String charityAccBank, String charityAccNumber, String charityAccName, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
             con = JDBCUtility.getCon();
@@ -542,7 +542,6 @@ public class Charity extends HttpServlet{
             throws ServletException, IOException{
             
             con = JDBCUtility.getCon();
-        
             sqlStatement ="SELECT * FROM charity WHERE (charityID = ?)";
             /*try (PrintWriter out = response.getWriter()) {
                         out.println(eventCategory);

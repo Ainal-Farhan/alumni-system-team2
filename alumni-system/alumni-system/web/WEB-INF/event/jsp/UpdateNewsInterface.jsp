@@ -134,7 +134,9 @@
                             </div>
                         </div>
                     </div>
+                    <% int newsID =((News)newslist.get(i)).getNewsID(); %>
                     <div class="d-grid gap-2 col-3 mx-auto pt-1">
+                        <input type="hidden" name="newsID" value=<%=newsID %> >
                         <input class="btn btn-warning" type="reset" id="buttonreset" name="buttonreset" value="Reset Form">
                         <input class=" btn btn-primary" type="submit" id="button7" name="button7" value="Update News">                                            
                     </div>
@@ -234,7 +236,7 @@
                     <br>UTM Skudai, 81310 Johor,
                     <br>Malaysia.</b></p>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <p><b>Tel: +6075557351
                     <br>Fax: +6075566155
                     <br>Email: fabu@utm.my</b></p>                                             

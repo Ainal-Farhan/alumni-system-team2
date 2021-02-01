@@ -160,7 +160,9 @@
                             </div>
                         </div>
                     </div>
+                    <% int charityID =((Charity)charitylist.get(i)).getCharityID(); %>
                     <div class="d-grid gap-2 col-4 mx-auto pt-1">
+                        <input type="hidden" name="charityID" value=<%=charityID %> >
                         <input class="btn btn-warning" type="reset" id="buttonreset" name="buttonreset" value="Reset Form">
                         <input class=" btn btn-primary" type="submit" id="button7" name="button7" value="Update Charity">                                            
                     </div>
@@ -294,7 +296,7 @@
                     <br>UTM Skudai, 81310 Johor,
                     <br>Malaysia.</b></p>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <p><b>Tel: +6075557351
                     <br>Fax: +6075566155
                     <br>Email: fabu@utm.my</b></p>                                             

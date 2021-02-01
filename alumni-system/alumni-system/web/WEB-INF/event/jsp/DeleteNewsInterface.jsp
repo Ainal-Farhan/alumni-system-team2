@@ -72,7 +72,6 @@
                     <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
                     <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p>
                 </header>
-                
             <% String message = (String)session.getAttribute("alertMsg");%>
 
             <% if(!message.equals("no")){ %>

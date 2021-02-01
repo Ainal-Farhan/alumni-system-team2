@@ -172,7 +172,6 @@
     </div>
 </div>   
     <%--</form>--%>
-    
     <jsp:include page="../../allModules/footer.jsp" />
     
     <%--<div class="divbutton">

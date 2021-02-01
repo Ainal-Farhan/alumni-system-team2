@@ -225,8 +225,10 @@
                     </div>
                                   
                     <div class="d-grid gap-2 mx-auto pt-1" style="width:260px;display: block;margin-right: auto;margin-left: auto;">
-                            <input class="btn btn-warning" type="reset" id="buttonreset" style="width:125px" name="buttonreset" value="Reset Form">
-                            <input class=" btn btn-primary" type="submit" id="button1" style="width:125px" name="button7" value="Update Event">                            
+                        <% int eventID =((Event)eventlist.get(i)).getEventID(); %>
+                        <input type="hidden" name="eventID" value=<%=eventID %> >
+                        <input class="btn btn-warning" type="reset" id="buttonreset" style="width:125px" name="buttonreset" value="Reset Form">
+                        <input class=" btn btn-primary" type="submit" id="button7" style="width:125px" name="button7" value="Update Event">                            
                     </div>
                     <div class="d-grid gap-2 mx-auto pt-2" style="width:150px;display: block;margin-right: auto;margin-left: auto;">
                         <a href="ManageEventControl?option=Event Menu" style="width:100%" class="btn btn-success">Event Menu</a>       
@@ -414,7 +416,6 @@
         </tr>
         
       </table>--%>
-    
     
     <jsp:include page="../../allModules/footer.jsp" />
 <%  } %>
