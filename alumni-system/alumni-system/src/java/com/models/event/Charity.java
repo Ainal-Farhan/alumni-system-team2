@@ -181,27 +181,7 @@ public class Charity extends HttpServlet{
 	public void createCharity(String charityTitle, String charityDescription, String charityDateline, double charityTargetAmt, InputStream charityImage, String charityAccBank, String charityAccNumber, String charityAccName, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
-            
+            con = JDBCUtility.getCon();
         
             sqlStatement = "INSERT INTO charity(charityTitle, charityImage, charityDescription, charityTargetAmt, charityDateline, charityAccBank, charityAccNumber, charityAccName) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
             boolean insertSuccess = false;
@@ -255,27 +235,7 @@ public class Charity extends HttpServlet{
 	public void deleteCharity(int charityID, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
-            
+            con = JDBCUtility.getCon();
         
             sqlStatement = "DELETE FROM charity WHERE (charityID = ?)";
             
@@ -319,27 +279,8 @@ public class Charity extends HttpServlet{
 	public void searchSavedCharity(int charityID, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
-            
+            con = JDBCUtility.getCon();
+        
             sqlStatement ="SELECT * FROM charity WHERE (charityID = ?)";
             HttpSession session = request.getSession();
             
@@ -396,7 +337,6 @@ public class Charity extends HttpServlet{
 		
                     event = events.get(counter);
                     session.setAttribute("event", event);
-
                     response.sendRedirect(request.getContextPath() + "/DeleteEventInterface.jsp");
                 }*/
                 
@@ -426,27 +366,7 @@ public class Charity extends HttpServlet{
 	public void updateSavedCharity(int charityID, String charityTitle, String charityDescription, String charityDateline, double charityTargetAmt, InputStream charityImage, String charityAccBank, String charityAccNumber, String charityAccName, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            Charity charity = new Charity(); 
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
-            
+            con = JDBCUtility.getCon();
         
             sqlStatement = "UPDATE charity SET charityTitle = ?, charityImage = ?, charityDescription = ?, charityTargetAmt = ?, charityDateline = ?, charityAccBank = ?, charityAccNumber = ?, charityAccName = ? WHERE charityID = ?";
             
@@ -497,30 +417,7 @@ public class Charity extends HttpServlet{
 	public void searchAllSavedCharity(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
-            
-            sqlStatement ="SELECT * FROM charity";
-            HttpSession session = request.getSession();
-            
+            con = JDBCUtility.getCon();
         
             ArrayList<Charity> charitylist = new ArrayList<Charity>();
             Charity charity = new Charity(); 
@@ -572,7 +469,6 @@ public class Charity extends HttpServlet{
 		
                     event = events.get(counter);
                     session.setAttribute("event", event);
-
                     response.sendRedirect(request.getContextPath() + "/DeleteEventInterface.jsp");
                 }*/
             }
@@ -588,27 +484,8 @@ public class Charity extends HttpServlet{
 
         public ArrayList<Charity> getAllSavedCharity(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
-            
+            con = JDBCUtility.getCon();
+        
             sqlStatement ="SELECT * FROM charity";
             HttpSession session = request.getSession();
             
@@ -664,27 +541,7 @@ public class Charity extends HttpServlet{
 	public void updateCharityGatheredAmt(int charityID, double charityAmt, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
             
-            String driver = "com.mysql.jdbc.Driver";
-
-            /*String dbName = "y3L2hmfmkc";
-            String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?";
-            String userName = "y3L2hmfmkc";
-            String password = "dPm3whaoYd";*/
-            
-            String dbName = "alumni_module-db";
-            String url = "jdbc:mysql://localhost/" + dbName + "?";
-            String userName = "root";
-            String password = "";
-
-            
-            jdbcUtility = new JDBCUtility(driver,
-                                          url,
-                                          userName,
-                                          password);
-
-            jdbcUtility.jdbcConnect();
-            con = jdbcUtility.jdbcGetConnection();
-            
+            con = JDBCUtility.getCon();
             sqlStatement ="SELECT * FROM charity WHERE (charityID = ?)";
             /*try (PrintWriter out = response.getWriter()) {
                         out.println(eventCategory);

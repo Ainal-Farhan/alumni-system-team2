@@ -54,8 +54,7 @@
                     </tr>  
       </table>
   </div>
-
-<!-- END PAGE CONTENT -->
+    
 </div>
 
 </body>

@@ -16,16 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-import jdbc.JDBCUtility;
 /**
  *
  * @author Amir Syafiq
@@ -36,7 +30,6 @@ public class ManageCharityControl extends HttpServlet{
     
         Charity charity = new Charity();
         
-        private JDBCUtility jdbcUtility;
         private Connection con;
         
         protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -249,8 +242,7 @@ public class ManageCharityControl extends HttpServlet{
                 HttpSession session = request.getSession();
                 session.setAttribute("alertMsg", message);
                 request.getRequestDispatcher("WEB-INF/event/jsp/AddCharityInterface.jsp").forward(request, response);                            
-                        
-                
+
             }
             
             else if(charityAction.equals("Update"))

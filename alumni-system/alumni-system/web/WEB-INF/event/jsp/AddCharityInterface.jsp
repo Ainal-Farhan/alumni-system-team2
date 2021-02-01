@@ -69,12 +69,19 @@
         <jsp:include page="../../allModules/sideNavigationBar.jsp" />
         
         <div class="container-custom">
-                <div class="jumbotron">
-                    <!-- Header/Home -->
-                    <header class="header-home">
-                        <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
-                        <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p><br>
-                    </header>
+            
+            <nav class="navbar navbar-dark bg-dark">
+                <div style="height:36px">
+                    <p class="navbar-brand">ADD NEW CHARITY</p>
+                </div>
+            </nav>
+            
+            <div class="jumbotron" style="padding-top:25px;padding-bottom: 0;">
+                <!-- Header/Home -->
+                <header class="header-home">
+                    <img src="https://brand.utm.my/files/2016/08/LOGO-UTM.png" style="width:30%"><br>
+                    <br><p>FACULTY OF BUILT ENVIRONMENT, UNIVERSITI TEKNOLOGI MALAYSIA</p>
+                </header>
 
         
         <% String message = (String)session.getAttribute("alertMsg");%>
@@ -87,13 +94,12 @@
         <%}%>
         <form  name="AddCharityform" method="post" action="ManageCharityControl" enctype="multipart/form-data">
             
-        <div class="container pb-5">
+        <div class="container pb-5" style="margin-top:-30px;">
             <div class="row align-items-start justify-content-center"></div>
             <div class="row align-items-center pt-4">
                 <div class="col">
                     <div class="card mb-2 bg-light text-dark" style="width: auto;">
                         <div class="card-body">
-                            <h4 class="card-title" style="text-align: center;"><b>Add New Charity</b></h4>
                             <div class="row g-2 p-2">
                                 <div class="col">
                                   <div class="form-floating">
@@ -142,23 +148,23 @@
                                 <div class="col">
                                   <div class="form-floating">
                                     <label for="floatingInput">Charity Targeted Amount</label>
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="The Targeted Amount of the Charity" name="charityTargetAmt" size="100" required>                                    
+                                    <input type="text" class="form-control" style="height:42px;" id="floatingInput" placeholder="The Targeted Amount of the Charity" name="charityTargetAmt" size="100" required>                                    
                                   </div>
                                 </div>
                                 <div class="col-md">
                                   <div class="form-floating">
                                     <label for="floatingInput">Charity Image</label>
-                                    <input type="file" class="form-control" id="floatingInput" placeholder="Image of the Charity" name="charityImage" size="100" value="0.00" required>                                    
+                                    <input type="file" class="form-control" id="floatingInput" style="height:42px;" placeholder="Image of the Charity" name="charityImage" size="100" value="0.00" required>                                    
                                   </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="d-grid gap-2 col-3 mx-auto pt-1">
+                    <div class="d-grid gap-2 mx-auto pt-2" style="width:250px;display: block;margin-right: auto;margin-left: auto;">
                         <input class="btn btn-warning" type="reset" id="buttonreset" name="buttonreset" value="Reset Form">
                         <input class=" btn btn-primary" type="submit" id="button4" name="button4" value="Add Charity">                                            
                     </div>
-                    <div class="d-grid gap-2 col-2 mx-auto pt-2">
+                    <div class="d-grid gap-2 mx-auto pt-2" style="width:150px;display: block;margin-right: auto;margin-left: auto;">
                         <a href="ManageCharityControl?option=Charity Menu" class="btn btn-success">Charity Menu</a>       
                     </div>
                 </div>
