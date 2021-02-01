@@ -254,7 +254,6 @@
       </tr>
     </table>
     </form>--%>
-    
     <jsp:include page="../../allModules/footer.jsp" />
 <%  } %>
     </body>

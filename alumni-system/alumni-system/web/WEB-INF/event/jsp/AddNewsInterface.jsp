@@ -136,7 +136,6 @@
     </form>
   </div>
 </div>
-    
     <jsp:include page="../../allModules/footer.jsp" />
 <%  } %>
     </body>

@@ -231,7 +231,6 @@
                 </table>
                 </form>
             </div>--%>
-        
         <jsp:include page="../../allModules/footer.jsp" />
 <%  } %>
     </body>

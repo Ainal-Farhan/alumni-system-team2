@@ -382,7 +382,6 @@
         </tr>
         
       </table>--%>
-    
     <jsp:include page="../../allModules/footer.jsp" />
 <%  } %>
     </body>
